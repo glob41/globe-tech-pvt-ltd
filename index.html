@@ -10,64 +10,29 @@ body{
   margin:0;
   font-family:Arial, sans-serif;
   background:#f4f6f8;
+  color:#333;
 }
-
-/* HEADER */
 header{
   background:#0b2d5c;
   color:#fff;
-  padding:12px 15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header .brand{
+  padding:15px;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
 }
-header img{height:50px}
-
-/* MENU */
-.menu-btn{
-  font-size:26px;
-  cursor:pointer;
-}
-.menu{
-  position:fixed;
-  top:0;
-  right:-260px;
-  width:260px;
-  height:100%;
-  background:#0b2d5c;
-  padding:20px;
-  transition:0.3s;
-}
-.menu a{
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  padding:10px 0;
-  border-bottom:1px solid rgba(255,255,255,0.2);
-}
-
-/* SECTION */
+header img{height:55px}
 section{
-  max-width:1000px;
+  max-width:1100px;
   margin:auto;
-  padding:30px 15px;
+  padding:35px 15px;
 }
-h2{color:#0b2d5c}
-
-/* BOX */
 .box{
   background:#fff;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
+  padding:25px;
+  border-radius:14px;
+  margin-bottom:25px;
 }
-
-/* FORM */
+h2{color:#0b2d5c;margin-top:0}
 input,select,textarea{
   width:100%;
   padding:12px;
@@ -76,15 +41,14 @@ input,select,textarea{
   border-radius:8px;
 }
 button{
-  padding:12px 20px;
+  padding:12px 22px;
   background:#c79a63;
   color:#fff;
   border:none;
   border-radius:25px;
   cursor:pointer;
+  font-size:15px;
 }
-
-/* PLANS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -92,16 +56,13 @@ button{
 }
 .card{
   background:#fff;
-  padding:20px;
-  border-radius:15px;
+  padding:22px;
+  border-radius:16px;
   text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
-
-/* FII DII */
 .green{color:green;font-weight:bold}
 .red{color:red;font-weight:bold}
-
-/* FOOTER */
 footer{
   background:#0b2d5c;
   color:#fff;
@@ -114,74 +75,104 @@ footer{
 <body>
 
 <header>
-  <div class="brand">
-    <img src="logo.png">
-    <h3>Globe Tech Pvt Ltd</h3>
-  </div>
-  <div class="menu-btn" onclick="openMenu()">⋮</div>
+  <img src="logo.png" alt="Globe Tech Logo">
+  <h2>Globe Tech Pvt Ltd</h2>
 </header>
 
-<div class="menu" id="menu">
-  <a href="#" onclick="closeMenu()">✖ Close</a>
-  <a href="#about">About</a>
-  <a href="#register">Register</a>
-  <a href="#plans">Plans</a>
-  <a href="#fiidi">FII–DII</a>
-  <a href="#contact">Contact</a>
-</div>
-
 <!-- REGISTER -->
-<section id="register" class="box">
+<section class="box">
 <h2>Register Now</h2>
 <form onsubmit="sendRegister(event)">
 <input id="rname" placeholder="Full Name" required>
 <input id="rmobile" placeholder="Mobile Number" required>
-<input id="remail" type="email" placeholder="Email" required>
+<input id="remail" type="email" placeholder="Email ID" required>
 <select id="rgender">
-<option>Male</option><option>Female</option><option>Other</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
 </select>
-<textarea id="raddress" placeholder="Address"></textarea>
+<textarea id="raddress" placeholder="Full Address"></textarea>
 <button type="submit">Register</button>
 </form>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="box">
+<section class="box">
 <h2>About Us</h2>
-<p>SEBI Registered Stock Market Company since 2017</p>
-<p><b>SEBI Reg No:</b> INZ000246569</p>
+<p>
+Globe Tech Pvt Ltd is a <strong>SEBI Registered Stock Market Company</strong>
+established in the year <strong>2017</strong>.
+</p>
+<p>
+We have successfully served more than
+<strong>12,000+ Happy Clients</strong> across India.
+</p>
+<p>
+Our services focus on <strong>Equity, Derivatives, Options and MCX Commodities</strong>.
+We believe in transparency, disciplined trading and long-term wealth creation.
+</p>
+<p><strong>SEBI Registration Number:</strong> INZ000246569</p>
+<p style="font-size:13px;color:#555">
+⚠ Market investments are subject to market risks.
+Please read all scheme related documents carefully.
+</p>
+</section>
+
+<!-- SEGMENTS -->
+<section class="box">
+<h2>Market Segments & Timings</h2>
+
+<h3>📈 Equity Market (NSE / BSE)</h3>
+<ul>
+<li>Cash / Delivery</li>
+<li>Intraday Trading</li>
+<li>Futures & Options (F&O)</li>
+<li>Index Trading (NIFTY, BANK NIFTY)</li>
+</ul>
+<p><strong>Market Time:</strong> 9:15 AM – 3:30 PM</p>
+
+<h3>🪙 Commodity Market (MCX)</h3>
+<ul>
+<li>Gold</li>
+<li>Silver</li>
+<li>Crude Oil</li>
+<li>Natural Gas</li>
+</ul>
+<p><strong>Market Time:</strong> 9:00 AM – 11:30 PM</p>
 </section>
 
 <!-- PLANS -->
-<section id="plans">
+<section>
 <h2>Service Plans</h2>
 <div class="grid">
 
 <div class="card">
-<h3>Basic</h3>
+<h3>Basic Plan</h3>
 <p><b>₹21,000 + GST / Month</b></p>
-<button onclick="plan('Basic Monthly ₹21,000 + GST')">Select Plan</button>
+<button onclick="plan('Basic Plan – ₹21,000 + GST / Month')">Select Plan</button>
 </div>
 
 <div class="card">
-<h3>Standard</h3>
+<h3>Standard Plan</h3>
 <p><b>₹45,000 + GST / Month</b></p>
-<button onclick="plan('Standard Monthly ₹45,000 + GST')">Select Plan</button>
+<button onclick="plan('Standard Plan – ₹45,000 + GST / Month')">Select Plan</button>
 </div>
 
 <div class="card">
-<h3>Premium</h3>
-<p><b>₹60,000 + GST / Month</b><br>
-₹1,50,000 + GST / Quarterly</p>
-<button onclick="plan('Premium Plan')">Select Plan</button>
+<h3>Premium Plan</h3>
+<p>
+<b>₹60,000 + GST / Month</b><br>
+₹1,50,000 + GST / Quarterly
+</p>
+<button onclick="plan('Premium Plan – Monthly / Quarterly')">Select Plan</button>
 </div>
 
 </div>
 </section>
 
 <!-- FII DII -->
-<section id="fiidi" class="box">
-<h2>FII / DII Activity (Latest Available)</h2>
+<section class="box">
+<h2>FII / DII Activity (Latest Available Data)</h2>
 <p>FII CM: <span class="red">-4,781.24</span></p>
 <p>DII CM: <span class="green">+5,217.28</span></p>
 <p>FII Index Futures: <span class="red">-231.59</span></p>
@@ -189,30 +180,27 @@ footer{
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="box">
-<h2>Contact</h2>
-<p>Email: Globetech8518@gmail.com</p>
-<p>WhatsApp: 9977004118</p>
+<section class="box">
+<h2>Contact Us</h2>
+<p>Email: <b>Globetech8518@gmail.com</b></p>
+<p>WhatsApp: <b>9977004118</b></p>
 </section>
 
 <footer>
-© 2025 Globe Tech Pvt Ltd
+© 2025 Globe Tech Pvt Ltd | SEBI Registered
 </footer>
 
 <script>
-function openMenu(){menu.style.right="0"}
-function closeMenu(){menu.style.right="-260px"}
-
 function sendRegister(e){
 e.preventDefault();
-let msg="New Registration:%0AName:"+rname.value+
-"%0AMobile:"+rmobile.value+
-"%0AEmail:"+remail.value+
-"%0AGender:"+rgender.value+
-"%0AAddress:"+raddress.value;
+let msg="New Registration:%0A"+
+"Name: "+rname.value+
+"%0AMobile: "+rmobile.value+
+"%0AEmail: "+remail.value+
+"%0AGender: "+rgender.value+
+"%0AAddress: "+raddress.value;
 window.open("https://wa.me/919977004118?text="+msg);
 }
-
 function plan(p){
 window.open("https://wa.me/919977004118?text=Client%20interested%20in%20"+p);
 }
