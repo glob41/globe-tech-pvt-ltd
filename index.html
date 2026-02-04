@@ -8,354 +8,125 @@
 <style>
 
 body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4f6f8;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f6f8;
+color:#333;
+}
+
+/* TOP BAR */
+.topbar{
+background:#000;
+color:#fff;
+padding:6px;
+text-align:center;
+font-size:13px;
 }
 
 /* HEADER */
 .header{
-    text-align:center;
-    background:white;
-    padding:15px;
-    border-bottom:3px solid darkred;
+background:#fff;
+text-align:center;
+padding:20px;
+border-bottom:3px solid #8b1d1d;
 }
 
 .header h1{
-    color:darkred;
-    margin:0;
+margin:0;
+color:#8b1d1d;
+font-size:28px;
 }
 
 .sebi{
-    background:darkred;
-    color:white;
-    display:inline-block;
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:13px;
-    margin-top:5px;
+display:inline-block;
+background:#8b1d1d;
+color:#fff;
+padding:4px 12px;
+border-radius:15px;
+font-size:13px;
+margin-top:5px;
 }
 
 /* MENU */
-.menu{
-    background:#222;
-    text-align:center;
-    padding:10px;
+nav{
+background:#0b2d5c;
+padding:10px;
+text-align:center;
 }
 
-.menu a{
-    color:white;
-    text-decoration:none;
-    margin:0 12px;
-    font-weight:bold;
+nav a{
+color:#fff;
+margin:0 15px;
+text-decoration:none;
+font-weight:600;
 }
 
-/* LIVE MARKET */
-.market{
-    background:#fff;
-    margin:15px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 5px #ccc;
+/* SECTION */
+section{
+max-width:1200px;
+margin:auto;
+padding:30px 15px;
 }
 
-.market h2{
-    text-align:center;
-    color:darkred;
-}
-
-.market-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-}
-
-.market-box{
-    background:#eee;
-    padding:10px;
-    text-align:center;
-    border-radius:8px;
-    font-weight:bold;
+/* BOX */
+.box{
+background:#fff;
+padding:25px;
+border-radius:15px;
+margin-bottom:30px;
+box-shadow:0 5px 15px rgba(0,0,0,.12);
 }
 
 /* FORM */
-.form-box{
-    background:white;
-    margin:15px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 0 5px #ccc;
-}
-
-.form-box h2{
-    text-align:center;
-    color:darkred;
-}
-
 input,textarea,select{
-    width:100%;
-    padding:10px;
-    margin:6px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
+width:100%;
+padding:12px;
+margin-bottom:12px;
+border:1px solid #ccc;
+border-radius:8px;
 }
 
-/* TERMS */
-.terms-box{
-    display:none;
-    background:#f1f1f1;
-    padding:10px;
-    margin-top:5px;
-    border-radius:5px;
-    font-size:14px;
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+@media(max-width:768px){
+.grid{grid-template-columns:1fr;}
+}
+
+/* CARD */
+.card{
+background:#fff;
+padding:18px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+margin:10px 0;
+font-size:14px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:6px;
+text-align:center;
+}
+
+th{
+background:#8b1d1d;
+color:#fff;
 }
 
 /* BUTTON */
 button{
-    background:darkred;
-    color:white;
-    border:none;
-    padding:12px;
-    width:100%;
-    border-radius:25px;
-    font-size:16px;
-    cursor:pointer;
-}
-
-button:disabled{
-    background:gray;
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<div class="header">
-    <h1>Globe Tech Pvt Ltd</h1>
-    <div class="sebi">SEBI Reg. No: XXXXXXX</div>
-</div>
-
-<!-- MENU -->
-<div class="menu">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#plans">Plans</a>
-    <a href="#">Contact</a>
-    <a href="#">Register</a>
-</div>
-
-<!-- LIVE MARKET -->
-<div class="market">
-    <h2>Live Market</h2>
-
-    <div class="market-grid">
-
-        <div class="market-box" id="nifty">NIFTY: --</div>
-        <div class="market-box" id="bank">BANKNIFTY: --</div>
-
-        <div class="market-box" id="sensex">SENSEX: --</div>
-        <div class="market-box" id="gold">GOLD: --</div>
-
-        <div class="market-box" id="silver">SILVER: --</div>
-        <div class="market-box" id="crude">CRUDE: --</div>
-
-    </div>
-</div>
-
-<!-- FORM -->
-<div class="form-box">
-
-<h2>Register Now</h2>
-
-<form id="regForm">
-
-<input type="text" placeholder="Full Name" required>
-
-<input type="tel" placeholder="Mobile Number" required pattern="[0-9]{10}">
-
-<input type="email" placeholder="Email Address" required>
-
-<textarea placeholder="Address" required></textarea>
-
-<!-- ID PROOF -->
-<select id="idType" required onchange="changeID()">
-    <option value="">Select ID Proof</option>
-    <option value="aadhaar">Aadhaar</option>
-    <option value="pan">PAN</option>
-</select>
-
-<input type="text" id="idInput" placeholder="Enter ID Number" disabled required>
-
-<!-- TERMS -->
-<label>
-<input type="checkbox" id="termsCheck" onclick="toggleTerms()"> 
-I Agree Terms & Conditions
-</label>
-
-<div class="terms-box" id="termsBox">
-
-<b>Terms & Conditions:</b><br><br>
-
-We provide daily market support and professional advisory services.
-We focus on risk management and safe trading practices.
-Our goal is to give maximum possible support and transparency.
-Market investment is subject to risk.
-Past performance is not a guarantee of future returns.
-Clients must take decisions responsibly.
-
-</div>
-
-<br>
-
-<button type="submit" id="submitBtn" disabled>Submit</button>
-
-</form>
-
-</div>
-
-<!-- SCRIPT -->
-<script>
-
-/* ID PROOF VALIDATION */
-function changeID(){
-
-let type=document.getElementById("idType").value;
-let input=document.getElementById("idInput");
-
-input.disabled=false;
-input.value="";
-
-if(type=="aadhaar"){
-    input.placeholder="Enter 12 Digit Aadhaar";
-    input.pattern="[0-9]{12}";
-}
-else if(type=="pan"){
-    input.placeholder="Enter PAN (ABCDE1234F)";
-    input.pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}";
-}
-}
-
-/* TERMS SHOW */
-function toggleTerms(){
-
-let box=document.getElementById("termsBox");
-let check=document.getElementById("termsCheck");
-
-if(check.checked){
-    box.style.display="block";
-    document.getElementById("submitBtn").disabled=false;
-}
-else{
-    box.style.display="none";
-    document.getElementById("submitBtn").disabled=true;
-}
-
-}
-
-/* LIVE MARKET API */
-const apiKey="e2e5ff8a05fd451bacc36bda601aaf81";
-
-function loadMarket(){
-
-fetch(`https://api.twelvedata.com/quote?symbol=NIFTY,BNF,SENSEX,GOLD,SILVER,CL&apikey=${apiKey}`)
-.then(res=>res.json())
-.then(data=>{
-
-document.getElementById("nifty").innerText="NIFTY: "+(data.NIFTY?.close || "--");
-document.getElementById("bank").innerText="BANKNIFTY: "+(data.BNF?.close || "--");
-document.getElementById("sensex").innerText="SENSEX: "+(data.SENSEX?.close || "--");
-
-document.getElementById("gold").innerText="GOLD: "+(data.GOLD?.close || "--");
-document.getElementById("silver").innerText="SILVER: "+(data.SILVER?.close || "--");
-document.getElementById("crude").innerText="CRUDE: "+(data.CL?.close || "--");
-
-});
-
-}
-
-loadMarket();
-setInterval(loadMarket,60000);
-
-</script>
-
-</body>
-</html>
-<!-- ================= PLANS SECTION ================= -->
-
-<section id="plans-section">
-
-<h2 style="text-align:center;color:#8b1d1d;margin-top:40px;">
-Our Subscription Plans
-</h2>
-
-<div style="text-align:center;margin:15px;">
-<button onclick="togglePlans()" class="main-btn">
-View / Hide Plans
-</button>
-</div>
-
-<div id="plansContainer" style="display:none;">
-
-<!-- ================= CSS ================= -->
-
-<style>
-
-.plan-box{
-margin:25px auto;
-max-width:900px;
-padding:20px;
-border-radius:15px;
-color:#fff;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-.plan-title{
-text-align:center;
-font-size:22px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.plan-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
-
-.plan-card{
-background:#fff;
-color:#333;
-padding:15px;
-border-radius:12px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
-
-.plan-card h4{
-margin-bottom:10px;
-color:#8b1d1d;
-}
-
-.plan-table{
-width:100%;
-border-collapse:collapse;
-margin-bottom:10px;
-}
-
-.plan-table th{
-background:#8b1d1d;
-color:#fff;
-padding:6px;
-}
-
-.plan-table td{
-border:1px solid #ccc;
-padding:6px;
-}
-
-.select-btn{
 background:#8b1d1d;
 color:#fff;
 border:none;
@@ -364,236 +135,365 @@ border-radius:20px;
 cursor:pointer;
 }
 
-.select-btn:hover{
-opacity:0.9;
-}
-
-.main-btn{
+/* DISCLAIMER */
+.disclaimer{
 background:#8b1d1d;
 color:#fff;
-border:none;
-padding:10px 25px;
-border-radius:25px;
-font-size:15px;
-cursor:pointer;
+padding:25px;
+border-radius:15px;
+line-height:1.6;
+}
+
+/* FOOTER */
+footer{
+background:#0b2d5c;
+color:#fff;
+text-align:center;
+padding:12px;
+font-size:13px;
 }
 
 </style>
+</head>
 
+<body>
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- TOP BAR -->
+<div class="topbar">
+📞 7697611673 | ✉️ Globetech8518@gmail.com
+</div>
 
+<!-- HEADER -->
+<div class="header">
+<h1>GLOBE TECH PVT LTD</h1>
+<p>SEBI Registered Research Analyst</p>
+<div class="sebi">SEBI Reg. No: INZ000246569</div>
+</div>
+
+<!-- MENU -->
+<nav>
+<a href="#market">Live Market</a>
+<a href="#register">Register</a>
+<a href="#plans">Plans</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- LIVE MARKET -->
+<section class="box" id="market">
+
+<h3>📊 Live Market (Auto Update)</h3>
+
+<b>Equity</b>
+<p id="nifty">NIFTY: Loading...</p>
+<p id="bank">BANKNIFTY: Loading...</p>
+<p id="sensex">SENSEX: Loading...</p>
+
+<b>Commodity</b>
+<p id="gold">GOLD: Loading...</p>
+<p id="silver">SILVER: Loading...</p>
+<p id="crude">CRUDE: Loading...</p>
+<p id="gas">NATURAL GAS: Loading...</p>
+
+</section>
+
+<!-- REGISTER -->
+<section class="box" id="register">
+
+<h3>Register Now</h3>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+<input type="email" id="email" placeholder="Email ID" required>
+<textarea id="address" placeholder="Full Address" required></textarea>
+
+<!-- ID PROOF -->
+<label><b>ID Proof (Any One)</b></label>
+
+<select id="idType" onchange="showIdField()" required>
+<option value="">-- Select ID Proof --</option>
+<option value="aadhaar">Aadhaar Card</option>
+<option value="pan">PAN Card</option>
+</select>
+
+<input type="text" id="aadhaar"
+placeholder="Enter 12 Digit Aadhaar Number"
+style="display:none;" maxlength="12">
+
+<input type="text" id="pan"
+placeholder="Enter PAN (ABCDE1234F)"
+style="display:none;" maxlength="10">
+
+<!-- TERMS -->
+<label style="font-weight:600;cursor:pointer;">
+<input type="checkbox" id="termsCheck">
+ I agree to 
+ <span onclick="toggleTerms()" style="color:#8b1d1d;text-decoration:underline;">
+ Terms & Conditions
+ </span>
+</label>
+
+<!-- TERMS BOX -->
+<div id="termsBox" style="
+display:none;
+margin-top:10px;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:13px;
+background:#fafafa;
+max-height:150px;
+overflow-y:auto;
+">
+
+<b>Terms & Conditions</b><br><br>
+
+1. We provide daily market research and guidance.  
+2. Risk management is followed for safety.  
+3. No guaranteed profit.  
+4. Market investments involve risk.  
+5. Company is not responsible for losses.  
+6. Information must be correct.  
+7. Misuse may lead to termination.  
+8. Services are transparent.  
+9. Educational purpose only.  
+10. You agree to all policies.
+
+</div>
+
+<br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+</section>
+
+<!-- PLANS -->
+<section class="box" id="plans">
+
+<h3>Service Plans (Sample)</h3>
+
+<div class="grid">
+
+<div class="card">
+<h4>Basic</h4>
+
+<table>
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>21000</td><td>3780</td><td>24780</td></tr>
+</table>
+
+<button onclick="sendPlan('Basic','1 Month',21000)">
+Select
+</button>
+</div>
+
+<div class="card">
+<h4>Standard</h4>
+
+<table>
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>40000</td><td>7200</td><td>47200</td></tr>
+</table>
+
+<button onclick="sendPlan('Standard','1 Month',40000)">
+Select
+</button>
+</div>
+
+<div class="card">
+<h4>Premium</h4>
+
+<table>
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>61000</td><td>10980</td><td>71980</td></tr>
+</table>
+
+<button onclick="sendPlan('Premium','1 Month',61000)">
+Select
+</button>
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="box" id="about">
+
+<h3>About Us</h3>
+
+<p>
+Globe Tech Pvt Ltd is a SEBI registered research company providing
+professional stock market advisory services.
+</p>
+
+<p>
+We specialize in Equity, Commodity and Portfolio Management with
+strong risk management and transparent working.
+</p>
+
+<p>
+Our aim is to help clients grow their capital safely with discipline.
+</p>
+
+</section>
+
+<!-- DISCLAIMER -->
+<section class="disclaimer">
+
+<h3>Disclaimer</h3>
+
+<p>
+Market investments are subject to risk. We do not guarantee any profit.
+All recommendations are based on research and analysis.
+Clients must trade at their own risk.
+</p>
+
+</section>
+
+<!-- CONTACT -->
+<section class="box" id="contact">
+
+<h3>Contact Us</h3>
+
+<p><b>Mobile:</b> 7697611673</p>
+<p><b>Email:</b> Globetech8518@gmail.com</p>
+
+<p><b>Address:</b><br>
+Mangal City Mall, 4th Floor,<br>
+Vijay Nagar, Indore - 452010
+</p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+© 2026 Globe Tech Pvt Ltd | SEBI Registered
+</footer>
+
+<!-- SCRIPT -->
 <script>
 
-function togglePlans(){
-let box=document.getElementById("plansContainer");
-box.style.display = box.style.display==="none"?"block":"none";
+/* LIVE MARKET API */
+const API_KEY = "YOUR_API_KEY_HERE";
+
+async function loadMarket(){
+
+const symbols = {
+nifty:"NIFTY 50",
+bank:"BANKNIFTY",
+sensex:"SENSEX",
+gold:"XAU/USD",
+silver:"XAG/USD",
+crude:"WTI",
+gas:"NATURALGAS"
+};
+
+for(let id in symbols){
+
+let url=`https://api.twelvedata.com/price?symbol=${symbols[id]}&apikey=${API_KEY}`;
+
+let r=await fetch(url);
+let d=await r.json();
+
+if(d.price){
+document.getElementById(id).innerText=
+symbols[id]+" : "+d.price;
 }
 
-function sendWhatsApp(category,month,type,amount){
+}
 
-let gst = Math.round(amount*0.18);
-let total = amount + gst;
+}
 
-let msg =
+loadMarket();
+setInterval(loadMarket,60000);
+
+
+/* ID PROOF SHOW */
+function showIdField(){
+
+let t=document.getElementById("idType").value;
+
+aadhaar.style.display="none";
+pan.style.display="none";
+
+if(t==="aadhaar") aadhaar.style.display="block";
+if(t==="pan") pan.style.display="block";
+
+}
+
+
+/* TERMS TOGGLE */
+function toggleTerms(){
+
+let b=document.getElementById("termsBox");
+
+b.style.display=(b.style.display==="none")?"block":"none";
+
+}
+
+
+/* FORM VALIDATION */
+function validateForm(){
+
+let type=idType.value;
+let ad=aadhaar.value.trim();
+let pn=pan.value.trim();
+let terms=termsCheck.checked;
+
+if(type===""){
+alert("Select ID Proof");
+return false;
+}
+
+if(type==="aadhaar" && !/^\d{12}$/.test(ad)){
+alert("Enter valid 12 digit Aadhaar");
+return false;
+}
+
+if(type==="pan" && !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pn.toUpperCase())){
+alert("Enter valid PAN");
+return false;
+}
+
+if(!terms){
+alert("Accept Terms & Conditions");
+return false;
+}
+
+alert("Form Submitted Successfully!");
+return true;
+
+}
+
+
+/* PLAN WHATSAPP */
+function sendPlan(plan,duration,amount){
+
+let gst=Math.round(amount*0.18);
+let total=amount+gst;
+
+let msg=
 "Hello,%0A"+
-"Plan: "+category+"%0A"+
-"Duration: "+month+"%0A"+
-"Type: "+type+"%0A%0A"+
-"Amount: "+amount+"%0A"+
-"GST: "+gst+"%0A"+
-"Total: "+total;
+"I am interested in:%0A%0A"+
+"Plan: "+plan+"%0A"+
+"Duration: "+duration+"%0A"+
+"Amount: ₹"+amount+"%0A"+
+"GST: ₹"+gst+"%0A"+
+"Total: ₹"+total;
 
-let phone="919977004118"; // apna number change kar sakte ho
+window.open(
+"https://wa.me/917697611673?text="+msg,
+"_blank"
+);
 
-window.open("https://wa.me/"+phone+"?text="+msg,"_blank");
 }
 
 </script>
 
-
-<!-- ================= BOXES ================= -->
-
-
-<!-- ===== EQUITY ===== -->
-
-<!-- 1 MONTH -->
-<div class="plan-box" style="background:#ff9800;">
-<div class="plan-title">Equity - 1 Month</div>
-
-<div class="plan-grid">
-
-<div class="plan-card">
-<h4>Basic</h4>
-<table class="plan-table">
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>21000</td><td>3780</td><td>24780</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','1 Month','Basic',21000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Standard</h4>
-<table class="plan-table">
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>40000</td><td>7200</td><td>47200</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','1 Month','Standard',40000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Premium</h4>
-<table class="plan-table">
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>61000</td><td>10980</td><td>71980</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','1 Month','Premium',61000)">
-Select
-</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- 3 MONTH -->
-<div class="plan-box" style="background:#f44336;">
-<div class="plan-title">Equity - 3 Month</div>
-
-<div class="plan-grid">
-
-<div class="plan-card">
-<h4>Basic</h4>
-<table class="plan-table">
-<tr><td>52500</td><td>9450</td><td>61950</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','3 Month','Basic',52500)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Standard</h4>
-<table class="plan-table">
-<tr><td>90000</td><td>16200</td><td>106200</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','3 Month','Standard',90000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Premium</h4>
-<table class="plan-table">
-<tr><td>135000</td><td>24300</td><td>159300</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','3 Month','Premium',135000)">
-Select
-</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- 6 MONTH -->
-<div class="plan-box" style="background:#4caf50;">
-<div class="plan-title">Equity - 6 Month</div>
-
-<div class="plan-grid">
-
-<div class="plan-card">
-<h4>Basic</h4>
-<table class="plan-table">
-<tr><td>95000</td><td>17100</td><td>112100</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','6 Month','Basic',95000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Standard</h4>
-<table class="plan-table">
-<tr><td>160000</td><td>28800</td><td>188800</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','6 Month','Standard',160000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Premium</h4>
-<table class="plan-table">
-<tr><td>220000</td><td>39600</td><td>259600</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','6 Month','Premium',220000)">
-Select
-</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- 12 MONTH -->
-<div class="plan-box" style="background:#2196f3;">
-<div class="plan-title">Equity - 12 Month</div>
-
-<div class="plan-grid">
-
-<div class="plan-card">
-<h4>Basic</h4>
-<table class="plan-table">
-<tr><td>175000</td><td>31500</td><td>206500</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','12 Month','Basic',175000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Standard</h4>
-<table class="plan-table">
-<tr><td>280000</td><td>50400</td><td>330400</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','12 Month','Standard',280000)">
-Select
-</button>
-</div>
-
-<div class="plan-card">
-<h4>Premium</h4>
-<table class="plan-table">
-<tr><td>390000</td><td>70200</td><td>460200</td></tr>
-</table>
-<button class="select-btn"
-onclick="sendWhatsApp('Equity','12 Month','Premium',390000)">
-Select
-</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- ========== SAME STRUCTURE FOR COMMODITY & EQUITY+COMMODITY ========= -->
-<!-- Agar chaho to next message me mai wo bhi generate kar deta hoon -->
-
-</div>
-</section>
+</body>
+</html>
