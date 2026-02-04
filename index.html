@@ -2,398 +2,279 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Globe Tech Pvt Ltd</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Globe Tech Pvt Ltd</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-/* BASIC */
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f4f6f8;
-color:#333;
-}
-
-/* TOP BAR */
-.topbar{
-background:#000;
-color:#fff;
-padding:6px;
-text-align:center;
-font-size:13px;
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f4f6f9;
 }
 
 /* HEADER */
-.header{
-background:#fff;
-text-align:center;
-padding:15px;
-border-bottom:3px solid #8b1d1d;
+header{
+    background:#8B0000;
+    color:white;
+    text-align:center;
+    padding:15px;
 }
 
-.header h1{
-margin:0;
-color:#8b1d1d;
-font-size:28px;
+header h1{
+    margin:0;
 }
 
-.header p{
-margin:3px 0;
-color:#555;
+header p{
+    margin:5px 0;
 }
 
-.sebi{
-display:inline-block;
-background:#8b1d1d;
-color:#fff;
-padding:4px 12px;
-border-radius:15px;
-font-size:13px;
+/* LIVE MARKET */
+#liveMarket{
+    background:white;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-/* MENU */
-nav{
-background:#0b2d5c;
-padding:8px;
-text-align:center;
+.marketBox{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding:5px 0;
 }
 
-nav a{
-color:#fff;
-margin:0 15px;
-text-decoration:none;
-font-weight:600;
-}
-
-nav a:hover{
-text-decoration:underline;
-}
-
-/* BANNER */
-.banner{
-background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url('https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg');
-background-size:cover;
-background-position:center;
-color:#fff;
-padding:110px 20px;
-text-align:center;
-}
-
-/* SECTION */
-section{
-max-width:1200px;
-margin:auto;
-padding:35px 15px;
-}
-
-/* BOX */
-.box{
-padding:25px;
-border-radius:15px;
-margin-bottom:35px;
-box-shadow:0 5px 15px rgba(0,0,0,.12);
+.marketBox:last-child{
+    border:none;
 }
 
 /* FORM */
+#register{
+    background:white;
+    margin:15px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+#register h2{
+    text-align:center;
+    color:#8B0000;
+}
+
 input,select,textarea{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border:1px solid #ccc;
-border-radius:8px;
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-}
-
-@media(max-width:768px){
-.grid{grid-template-columns:1fr;}
-}
-
-/* CARD */
-.card{
-background:#fff;
-padding:18px;
-border-radius:14px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,.15);
-}
-
-/* TABLE */
-table{
-width:100%;
-border-collapse:collapse;
-margin:10px 0;
-font-size:14px;
-}
-
-th,td{
-border:1px solid #ddd;
-padding:6px;
-text-align:center;
-}
-
-th{
-background:#8b1d1d;
-color:#fff;
-}
-
-/* BUTTON */
 button{
-background:#8b1d1d;
-color:#fff;
-border:none;
-padding:8px 18px;
-border-radius:20px;
-cursor:pointer;
+    width:100%;
+    background:#8B0000;
+    color:white;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-/* COLORS */
-.c1{background:#fff3e0;}
-.c2{background:#ffe6e6;}
-.c3{background:#e8f8e8;}
-.c4{background:#e3f2fd;}
-.c5{background:#f3e5f5;}
-.c6{background:#ede7f6;}
-.c7{background:#fbe9e7;}
-.c8{background:#f1f8e9;}
-.c9{background:#e0f2f1;}
-.c10{background:#fafafa;}
-.c11{background:#eceff1;}
-.c12{background:#fce4ec;}
-
-/* DISCLAIMER */
-.disclaimer{
-background:#8b1d1d;
-color:#fff;
-padding:30px;
-border-radius:15px;
-line-height:1.6;
+button:hover{
+    background:#a30000;
 }
 
-/* FOOTER */
-footer{
-background:#0b2d5c;
-color:#fff;
-text-align:center;
-padding:12px;
+/* TERMS */
+#termsBox{
+    display:none;
+    background:#f1f1f1;
+    padding:10px;
+    border-radius:5px;
+    margin:10px 0;
+    font-size:14px;
 }
 
-#allPlans{display:none;}
+/* PLAN SECTION */
+.sectionTitle{
+    text-align:center;
+    margin-top:30px;
+    color:#8B0000;
+    font-size:22px;
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-📞 7697611673 | ✉️ Globetech8518@gmail.com
+<!-- HEADER -->
+<header>
+    <h1>Globe Tech Pvt Ltd</h1>
+    <p>SEBI Registered Research Analyst : INH0000XXXX</p>
+</header>
+
+
+<!-- LIVE MARKET -->
+<div id="liveMarket">
+
+<h3 style="text-align:center;color:#8B0000;">📈 Live Market</h3>
+
+<div class="marketBox">
+<span>NIFTY</span>
+<span id="nifty">Loading...</span>
 </div>
 
-<div class="header">
-<h1>GLOBE TECH PVT LTD</h1>
-<p>SEBI Registered Research Analyst</p>
-<div class="sebi">SEBI Reg. No: INZ000246569</div>
+<div class="marketBox">
+<span>BANK NIFTY</span>
+<span id="banknifty">Loading...</span>
 </div>
 
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="javascript:void(0)" onclick="openPlans()">Plans</a>
-<a href="#contact">Contact</a>
-<a href="#register">Register</a>
-</nav>
-
-<div class="banner" id="home">
-<h2>Trusted Stock Market Research</h2>
-<p>Equity • Commodity • Combo Advisory</p>
+<div class="marketBox">
+<span>SENSEX</span>
+<span id="sensex">Loading...</span>
 </div>
 
-<!-- REGISTER -->
-<section class="box" id="register">
-<h3>Register Now</h3>
+<div class="marketBox">
+<span>GOLD</span>
+<span id="gold">Loading...</span>
+</div>
 
-<form onsubmit="sendRegister(event)">
-<input id="rname" placeholder="Full Name" required>
-<input id="rmobile" placeholder="Mobile Number" required>
-<input id="remail" type="email" placeholder="Email ID" required>
+<div class="marketBox">
+<span>SILVER</span>
+<span id="silver">Loading...</span>
+</div>
 
-<select id="rgender">
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
+<div class="marketBox">
+<span>CRUDE OIL</span>
+<span id="crude">Loading...</span>
+</div>
+
+<div class="marketBox">
+<span>NATURAL GAS</span>
+<span id="gas">Loading...</span>
+</div>
+
+</div>
+
+
+<!-- REGISTER FORM -->
+<div id="register">
+
+<h2>Register Now</h2>
+
+<form id="clientForm">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+
+<input type="email" id="email" placeholder="Email ID" required>
+
+<textarea id="address" placeholder="Address" required></textarea>
+
+<label><b>ID Proof</b></label>
+
+<select id="idType" required>
+<option value="">Select ID</option>
+<option value="Aadhar">Aadhar Card</option>
+<option value="PAN">PAN Card</option>
 </select>
 
-<textarea id="raddress" placeholder="Full Address"></textarea>
+<input type="text" id="idNumber" placeholder="Enter ID Number" required>
 
-<button type="submit">Register</button>
+
+<input type="checkbox" id="agree" onclick="showTerms()">
+<label> I agree to Terms & Conditions</label>
+
+<div id="termsBox">
+
+<b>Terms & Conditions</b><br><br>
+
+We provide daily market research and trading guidance.
+We always try to keep clients on the safe side with proper risk management.
+All services are based on market conditions.
+Past performance does not guarantee future results.
+Investment in market is subject to market risks.
+Please read all documents carefully before investing.
+
+</div>
+
+<button type="submit">Submit</button>
+
 </form>
-</section>
 
-<!-- ABOUT -->
-<section class="box" id="about">
-<h3>About Us</h3>
+</div>
 
-<p>Globe Tech Pvt Ltd is a SEBI Registered Research Analyst company providing reliable stock market research since 2017.</p>
 
-<p>We provide Equity, Commodity and Derivatives analysis with strong risk management.</p>
+<h2 class="sectionTitle">Our Subscription Plans</h2>
 
-<ul>
-<li>Accurate Research Calls</li>
-<li>Dedicated Support</li>
-<li>Risk Management</li>
-<li>1500+ Clients</li>
-<li>Transparent Service</li>
-</ul>
-</section>
 
-<!-- DISCLAIMER -->
-<section class="disclaimer">
-<h3>⚠ Important Disclaimer</h3>
+<!-- PLANS START HERE (PART 2 CONTINUE) -->
 
-<p>
-We do not guarantee profit. Market investments are subject to risk.
-We are not responsible for losses. Payments only to official accounts.
-Beware of fake calls.
-</p>
 
-<p><b>SEBI Reg. No: INZ000246569</b></p>
-</section>
-
-<!-- PLANS -->
-<section id="plans">
-<h3>Subscription Plans</h3>
-
-<div id="allPlans">
-
-<!-- BOX TEMPLATE -->
 <script>
-const plans = [
-/* EQUITY */
-["1 Month Equity",21000,40000,61000],
-["3 Month Equity",52500,100000,152500],
-["6 Month Equity",94500,180000,274500],
-["12 Month Equity",147000,280000,427000],
 
-/* COMMODITY */
-["1 Month Commodity",21000,40000,61000],
-["3 Month Commodity",52500,100000,152500],
-["6 Month Commodity",94500,180000,274500],
-["12 Month Commodity",147000,280000,427000],
+function showTerms(){
+    var box = document.getElementById("termsBox");
+    if(box.style.display==="none"){
+        box.style.display="block";
+    }else{
+        box.style.display="none";
+    }
+}
 
-/* COMBO */
-["1 Month Combo",31000,51000,80000],
-["3 Month Combo",77500,127500,200000],
-["6 Month Combo",139500,229500,360000],
-["12 Month Combo",217000,357000,560000],
-];
+/* FORM VALIDATION */
 
-const colors=["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12"];
+document.getElementById("clientForm").addEventListener("submit",function(e){
 
-let html="";
+    if(!document.getElementById("agree").checked){
+        alert("Please accept Terms & Conditions");
+        e.preventDefault();
+        return;
+    }
 
-plans.forEach((p,i)=>{
+    var id = document.getElementById("idNumber").value;
 
-html+=`
-<div class="box ${colors[i]}">
-<h3>${p[0]}</h3>
+    var type = document.getElementById("idType").value;
 
-<div class="grid">
+    if(type==="Aadhar" && id.length!==12){
+        alert("Aadhar must be 12 digits");
+        e.preventDefault();
+        return;
+    }
 
-${makeCard("Basic",p[1])}
-${makeCard("Standard",p[2])}
-${makeCard("Premium",p[3])}
+    if(type==="PAN" && id.length!==10){
+        alert("PAN must be 10 characters");
+        e.preventDefault();
+        return;
+    }
 
-</div>
-</div>
-`;
+    alert("Form Submitted Successfully!");
 
 });
 
-document.write(html);
 
-function makeCard(name,price){
+/* LIVE MARKET (DEMO DATA) */
 
-let gst=Math.round(price*0.18);
-let total=price+gst;
+function updateMarket(){
 
-return `
-<div class="card">
-<h4>${name}</h4>
+document.getElementById("nifty").innerText = (19500 + Math.random()*100).toFixed(2);
+document.getElementById("banknifty").innerText = (45000 + Math.random()*200).toFixed(2);
+document.getElementById("sensex").innerText = (66000 + Math.random()*150).toFixed(2);
 
-<table>
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>${price}</td><td>${gst}</td><td>${total}</td></tr>
-</table>
-
-<button onclick="sendPlan('${name}','${price}','${gst}','${total}')">Select</button>
-</div>
-`;
+document.getElementById("gold").innerText = (62000 + Math.random()*100).toFixed(2);
+document.getElementById("silver").innerText = (75000 + Math.random()*150).toFixed(2);
+document.getElementById("crude").innerText = (6500 + Math.random()*50).toFixed(2);
+document.getElementById("gas").innerText = (240 + Math.random()*10).toFixed(2);
 
 }
-</script>
 
-</div>
-</section>
-
-<!-- CONTACT -->
-<section class="box" id="contact">
-<h3>Contact Us</h3>
-
-<p>📞 7697611673</p>
-<p>📧 Globetech8518@gmail.com</p>
-<p>📍 Mangal City Mall, Vijay Nagar, Indore</p>
-</section>
-
-<footer>
-© 2026 Globe Tech Pvt Ltd | SEBI Registered
-</footer>
-
-<script>
-
-/* OPEN PLANS */
-function openPlans(){
-document.getElementById("plans").scrollIntoView({behavior:"smooth"});
-document.getElementById("allPlans").style.display="block";
-}
-
-/* REGISTER */
-function sendRegister(e){
-
-e.preventDefault();
-
-let msg=
-"New Registration:%0A"+
-"Name: "+rname.value+
-"%0AMobile: "+rmobile.value+
-"%0AEmail: "+remail.value+
-"%0AAddress: "+raddress.value;
-
-window.open("https://wa.me/917697611673?text="+msg);
-}
-
-/* PLAN */
-function sendPlan(name,amt,gst,total){
-
-let msg=
-"Hello,%0A"+
-"I am interested in:%0A"+
-name+
-"%0AAmount: "+amt+
-"%0AGST: "+gst+
-"%0ATotal: "+total;
-
-window.open("https://wa.me/917697611673?text="+msg);
-
-}
+setInterval(updateMarket,10000);
+updateMarket();
 
 </script>
-
-</body>
-</html>
