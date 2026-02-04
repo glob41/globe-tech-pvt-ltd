@@ -1,227 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Globe Tech Pvt Ltd</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f4f6f8;
-color:#333;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6f8;color:#333;}
 
 /* TOP BAR */
-.topbar{
-background:#8b1d1d;
-color:#fff;
-padding:8px;
-text-align:center;
-font-size:14px;
-}
+.topbar{background:#8b1d1d;color:#fff;padding:8px;text-align:center;font-size:14px;}
 
 /* HEADER */
-.header{
-background:#fff;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 15px;
-border-bottom:3px solid #8b1d1d;
-}
+.header{background:#fff;padding:12px 15px;border-bottom:3px solid #8b1d1d;}
+.header-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:900;color:#8b1d1d;}
 
-.logo{
-font-size:22px;
-font-weight:900;
-color:#8b1d1d;
-}
-
-.menu-btn{
-font-size:26px;
-cursor:pointer;
-color:#8b1d1d;
-}
-
-/* SIDE MENU */
-.sidemenu{
-position:fixed;
-top:0;
-right:-260px;
-width:260px;
-height:100%;
-background:#fff;
-box-shadow:-3px 0 10px rgba(0,0,0,.2);
-padding:20px;
-transition:0.3s;
-z-index:999;
-}
-
-.sidemenu a{
-display:block;
-padding:12px 0;
-text-decoration:none;
-color:#333;
-font-weight:bold;
-border-bottom:1px solid #eee;
-}
-
-.closebtn{
-font-size:22px;
-text-align:right;
-cursor:pointer;
-color:#8b1d1d;
-}
+nav a{margin-left:15px;text-decoration:none;color:#333;font-weight:bold;}
+nav a:hover{color:#8b1d1d;}
 
 /* BANNER */
-.banner{
-background:url('https://images.unsplash.com/1601597111158-2fceff292cdc') center/cover;
-padding:80px 20px;
-color:#fff;
-text-align:center;
-}
+.banner{background:url('https://images.unsplash.com/1601597111158-2fceff292cdc') center/cover;padding:80px 20px;color:#fff;text-align:center;}
 
 /* SECTION */
-section{
-max-width:1100px;
-margin:auto;
-padding:35px 15px;
-}
-
-.box{
-background:#fff;
-padding:25px;
-border-radius:14px;
-margin-bottom:25px;
-}
-
+section{max-width:1100px;margin:auto;padding:35px 15px;}
+.box{background:#fff;padding:25px;border-radius:14px;margin-bottom:25px;}
 h2{color:#8b1d1d}
 
 /* FORM */
-input,select,textarea{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border:1px solid #ccc;
-border-radius:8px;
-}
+input,select,textarea{width:100%;padding:12px;margin-bottom:12px;border:1px solid #ccc;border-radius:8px;}
 
 /* BUTTON */
-button{
-padding:10px 18px;
-background:#8b1d1d;
-color:#fff;
-border:none;
-border-radius:20px;
-cursor:pointer;
-font-size:14px;
-}
+button{padding:10px 18px;background:#8b1d1d;color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:14px;}
 
 /* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:#fff;
-padding:20px;
-border-radius:14px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+.card{background:#fff;padding:20px;border-radius:14px;text-align:center;box-shadow:0 5px 15px rgba(0,0,0,.1);}
 
 /* DISCLAIMER */
-.disclaimer{
-background:#8b1d1d;
-color:#fff;
-padding:25px;
-border-radius:10px;
-}
+.disclaimer{background:#8b1d1d;color:#fff;padding:25px;border-radius:10px;}
 
 /* FOOTER */
-footer{
-background:#0b2d5c;
-color:#fff;
-text-align:center;
-padding:15px;
+footer{background:#0b2d5c;color:#fff;text-align:center;padding:15px;}
+
+@media(max-width:768px){
+nav{font-size:14px;}
+nav a{margin-left:8px;}
 }
-</style>
-</head>
-
-<body>
-
-<!-- TOP BAR -->
-<div class="topbar">
-📞 7697611673 | ✉️ Globetech8518@gmail.com
-</div>
-
-<!-- HEADER -->
-<div class="header">
-<div class="logo">Globe Tech</div>
-<div class="menu-btn" onclick="openMenu()">☰</div>
-</div>
-
-<!-- SIDE MENU -->
-<div class="sidemenu" id="menu">
-<div class="closebtn" onclick="closeMenu()">✖</div>
-
+</style></head>
+<body><!-- TOP BAR --><div class="topbar">📞 7697611673 | ✉️ Globetech8518@gmail.com</div><!-- HEADER --><div class="header">
+<div class="header-inner">
+<div class="logo">Globe Tech Pvt Ltd</div>
+<nav>
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#plans">Pricing</a>
 <a href="#contact">Contact</a>
 <a href="#register">Register</a>
-
+</nav>
 </div>
-
-<!-- BANNER -->
-<div class="banner" id="home">
+</div><!-- BANNER --><div class="banner" id="home">
 <h1>Trusted SEBI Registered Research</h1>
 <p>Grow Your Wealth Confidently</p>
-</div>
-
-<!-- REGISTER -->
-<section class="box" id="register">
+</div><!-- REGISTER --><section class="box" id="register">
 <h2>Register Now</h2>
-
 <form onsubmit="sendRegister(event)">
 <input id="rname" placeholder="Full Name" required>
 <input id="rmobile" placeholder="Mobile Number" required>
 <input id="remail" type="email" placeholder="Email ID" required>
-
-<select id="rgender">
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
-</select>
-
+<select id="rgender"><option>Male</option><option>Female</option><option>Other</option></select>
 <textarea id="raddress" placeholder="Full Address"></textarea>
-
 <button type="submit">Register</button>
 </form>
-</section>
-
-<!-- ABOUT -->
-<section class="box" id="about">
+</section><!-- ABOUT --><section class="box" id="about">
 <h2>About Us</h2>
-
-<p>Globe Tech Pvt Ltd is a SEBI Registered Stock Market Company.</p>
-
-<p><b>1500+ Happy Clients</b> across India</p>
-
+<p>Globe Tech Pvt Ltd is a <b>SEBI Registered Stock Market Company</b> since 2017.</p>
+<p><b>1500+ Happy Clients</b> across India.</p>
 <p>We focus on Equity, Options & MCX Commodities.</p>
-
 <p><b>SEBI No:</b> INZ000246569</p>
-
 <p><b>Address:</b> Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
-</section>
-
-<!-- DISCLAIMER -->
-<section class="disclaimer">
+</section><!-- DISCLAIMER --><section class="disclaimer">
 <h2>⚠ Important Disclaimer</h2>
-
 <ul>
 <li>Market investments are subject to risk</li>
 <li>No guaranteed profit</li>
@@ -229,93 +85,49 @@ padding:15px;
 <li>Payments only to company account</li>
 <li>Beware of fake calls</li>
 </ul>
-</section>
-
-<!-- PLANS -->
-<section id="plans">
-
-<h2>Subscription Plans</h2>
-
-<h3>📈 Equity Plans</h3>
+</section><!-- PLANS --><section id="plans">
+<h2>Subscription Plans</h2><h3>📈 Equity Plans</h3>
 <div class="grid">
-
-<div class="card">
-<h4>1 Month - Basic</h4>
-<p>₹21,000 + GST</p>
-<button onclick="sendPlan('Equity','1 Month','Basic','₹21,000 + GST')">Select</button>
+<div class="card"><h4>1M Basic</h4><p>₹21,000</p><button onclick="sendPlan('Equity','1 Month','Basic','₹21,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Standard</h4><p>₹40,000</p><button onclick="sendPlan('Equity','1 Month','Standard','₹40,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Premium</h4><p>₹61,000</p><button onclick="sendPlan('Equity','1 Month','Premium','₹61,000 + GST')">Select</button></div>
+</div><h3>💎 Commodity Plans</h3>
+<div class="grid">
+<div class="card"><h4>1M Basic</h4><p>₹21,000</p><button onclick="sendPlan('Commodity','1 Month','Basic','₹21,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Standard</h4><p>₹40,000</p><button onclick="sendPlan('Commodity','1 Month','Standard','₹40,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Premium</h4><p>₹61,000</p><button onclick="sendPlan('Commodity','1 Month','Premium','₹61,000 + GST')">Select</button></div>
+</div><h3>🔥 Equity + Commodity Combo</h3>
+<div class="grid">
+<div class="card"><h4>1M Basic</h4><p>₹31,000</p><button onclick="sendPlan('Combo','1 Month','Basic','₹31,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Standard</h4><p>₹51,000</p><button onclick="sendPlan('Combo','1 Month','Standard','₹51,000 + GST')">Select</button></div>
+<div class="card"><h4>1M Premium</h4><p>₹80,000</p><button onclick="sendPlan('Combo','1 Month','Premium','₹80,000 + GST')">Select</button></div>
 </div>
-
-<div class="card">
-<h4>1 Month - Standard</h4>
-<p>₹40,000 + GST</p>
-<button onclick="sendPlan('Equity','1 Month','Standard','₹40,000 + GST')">Select</button>
-</div>
-
-<div class="card">
-<h4>1 Month - Premium</h4>
-<p>₹61,000 + GST</p>
-<button onclick="sendPlan('Equity','1 Month','Premium','₹61,000 + GST')">Select</button>
-</div>
-
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section class="box" id="contact">
+</section><!-- CONTACT --><section class="box" id="contact">
 <h2>Contact Us</h2>
-
 <p>📞 7697611673</p>
 <p>📧 Globetech8518@gmail.com</p>
-<p>📍 Vijay Nagar, Indore</p>
-
-</section>
-
-<footer>
-© 2026 Globe Tech Pvt Ltd | SEBI Registered
-</footer>
-
-<script>
-
-/* MENU */
-function openMenu(){
-document.getElementById('menu').style.right='0';
-}
-function closeMenu(){
-document.getElementById('menu').style.right='-260px';
-}
-
-/* REGISTER */
+<p>📍 Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
+</section><footer>© 2026 Globe Tech Pvt Ltd | SEBI Registered</footer><script>
 function sendRegister(e){
-e.preventDefault();
-
-let msg=
-"New Registration:%0A"+
-"Name: "+rname.value+
-"%0AMobile: "+rmobile.value+
-"%0AEmail: "+remail.value+
-"%0AGender: "+rgender.value+
-"%0AAddress: "+raddress.value;
-
-window.open("https://wa.me/917697611673?text="+msg);
+ e.preventDefault();
+ let msg="New Registration:%0A"+
+ "Name: "+rname.value+
+ "%0AMobile: "+rmobile.value+
+ "%0AEmail: "+remail.value+
+ "%0AGender: "+rgender.value+
+ "%0AAddress: "+raddress.value;
+ window.open("https://wa.me/917697611673?text="+msg);
 }
 
-/* PLAN */
 function sendPlan(cat,dur,plan,price){
-
-let msg=
-"Hello,%0A%0A"+
-"I am interested in:%0A"+
-"Category: "+cat+
-"%0ADuration: "+dur+
-"%0APlan: "+plan+
-"%0APrice: "+price+
-"%0A%0APlease contact me.";
-
-window.open("https://wa.me/917697611673?text="+msg);
+ let msg="Hello,%0A%0A"+
+ "I am interested in:%0A"+
+ "Category: "+cat+
+ "%0ADuration: "+dur+
+ "%0APlan: "+plan+
+ "%0APrice: "+price+
+ "%0A%0APlease contact me.";
+ window.open("https://wa.me/917697611673?text="+msg);
 }
-
-</script>
-
-</body>
+</script></body>
 </html>
