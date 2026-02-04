@@ -2,109 +2,128 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Globe Tech Pvt Ltd</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body{
     margin:0;
-    font-family:'Poppins',sans-serif;
-    background:#f4f6f9;
+    font-family:Arial, sans-serif;
+    background:#f4f6f8;
 }
 
 /* HEADER */
-header{
-    background:#8B0000;
-    color:white;
+.header{
     text-align:center;
+    background:white;
     padding:15px;
+    border-bottom:3px solid darkred;
 }
 
-header h1{
+.header h1{
+    color:darkred;
     margin:0;
 }
 
-header p{
-    margin:5px 0;
+.sebi{
+    background:darkred;
+    color:white;
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* MENU */
+.menu{
+    background:#222;
+    text-align:center;
+    padding:10px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+    font-weight:bold;
 }
 
 /* LIVE MARKET */
-#liveMarket{
+.market{
+    background:#fff;
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 5px #ccc;
+}
+
+.market h2{
+    text-align:center;
+    color:darkred;
+}
+
+.market-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.market-box{
+    background:#eee;
+    padding:10px;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+/* FORM */
+.form-box{
     background:white;
     margin:15px;
     padding:15px;
     border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    box-shadow:0 0 5px #ccc;
 }
 
-.marketBox{
-    display:flex;
-    justify-content:space-between;
-    border-bottom:1px solid #ddd;
-    padding:5px 0;
-}
-
-.marketBox:last-child{
-    border:none;
-}
-
-/* FORM */
-#register{
-    background:white;
-    margin:15px;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-#register h2{
+.form-box h2{
     text-align:center;
-    color:#8B0000;
+    color:darkred;
 }
 
-input,select,textarea{
+input,textarea,select{
     width:100%;
     padding:10px;
-    margin:8px 0;
+    margin:6px 0;
     border:1px solid #ccc;
     border-radius:5px;
 }
 
-button{
-    width:100%;
-    background:#8B0000;
-    color:white;
-    padding:12px;
-    border:none;
+/* TERMS */
+.terms-box{
+    display:none;
+    background:#f1f1f1;
+    padding:10px;
+    margin-top:5px;
     border-radius:5px;
+    font-size:14px;
+}
+
+/* BUTTON */
+button{
+    background:darkred;
+    color:white;
+    border:none;
+    padding:12px;
+    width:100%;
+    border-radius:25px;
     font-size:16px;
     cursor:pointer;
 }
 
-button:hover{
-    background:#a30000;
-}
-
-/* TERMS */
-#termsBox{
-    display:none;
-    background:#f1f1f1;
-    padding:10px;
-    border-radius:5px;
-    margin:10px 0;
-    font-size:14px;
-}
-
-/* PLAN SECTION */
-.sectionTitle{
-    text-align:center;
-    margin-top:30px;
-    color:#8B0000;
-    font-size:22px;
+button:disabled{
+    background:gray;
 }
 
 </style>
@@ -113,168 +132,153 @@ button:hover{
 <body>
 
 <!-- HEADER -->
-<header>
+<div class="header">
     <h1>Globe Tech Pvt Ltd</h1>
-    <p>SEBI Registered Research Analyst : INH0000XXXX</p>
-</header>
+    <div class="sebi">SEBI Reg. No: XXXXXXX</div>
+</div>
 
+<!-- MENU -->
+<div class="menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#plans">Plans</a>
+    <a href="#">Contact</a>
+    <a href="#">Register</a>
+</div>
 
 <!-- LIVE MARKET -->
-<div id="liveMarket">
+<div class="market">
+    <h2>Live Market</h2>
 
-<h3 style="text-align:center;color:#8B0000;">📈 Live Market</h3>
+    <div class="market-grid">
 
-<div class="marketBox">
-<span>NIFTY</span>
-<span id="nifty">Loading...</span>
+        <div class="market-box" id="nifty">NIFTY: --</div>
+        <div class="market-box" id="bank">BANKNIFTY: --</div>
+
+        <div class="market-box" id="sensex">SENSEX: --</div>
+        <div class="market-box" id="gold">GOLD: --</div>
+
+        <div class="market-box" id="silver">SILVER: --</div>
+        <div class="market-box" id="crude">CRUDE: --</div>
+
+    </div>
 </div>
 
-<div class="marketBox">
-<span>BANK NIFTY</span>
-<span id="banknifty">Loading...</span>
-</div>
-
-<div class="marketBox">
-<span>SENSEX</span>
-<span id="sensex">Loading...</span>
-</div>
-
-<div class="marketBox">
-<span>GOLD</span>
-<span id="gold">Loading...</span>
-</div>
-
-<div class="marketBox">
-<span>SILVER</span>
-<span id="silver">Loading...</span>
-</div>
-
-<div class="marketBox">
-<span>CRUDE OIL</span>
-<span id="crude">Loading...</span>
-</div>
-
-<div class="marketBox">
-<span>NATURAL GAS</span>
-<span id="gas">Loading...</span>
-</div>
-
-</div>
-
-
-<!-- REGISTER FORM -->
-<div id="register">
+<!-- FORM -->
+<div class="form-box">
 
 <h2>Register Now</h2>
 
-<form id="clientForm">
+<form id="regForm">
 
-<input type="text" id="name" placeholder="Full Name" required>
+<input type="text" placeholder="Full Name" required>
 
-<input type="tel" id="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+<input type="tel" placeholder="Mobile Number" required pattern="[0-9]{10}">
 
-<input type="email" id="email" placeholder="Email ID" required>
+<input type="email" placeholder="Email Address" required>
 
-<textarea id="address" placeholder="Address" required></textarea>
+<textarea placeholder="Address" required></textarea>
 
-<label><b>ID Proof</b></label>
-
-<select id="idType" required>
-<option value="">Select ID</option>
-<option value="Aadhar">Aadhar Card</option>
-<option value="PAN">PAN Card</option>
+<!-- ID PROOF -->
+<select id="idType" required onchange="changeID()">
+    <option value="">Select ID Proof</option>
+    <option value="aadhaar">Aadhaar</option>
+    <option value="pan">PAN</option>
 </select>
 
-<input type="text" id="idNumber" placeholder="Enter ID Number" required>
+<input type="text" id="idInput" placeholder="Enter ID Number" disabled required>
 
+<!-- TERMS -->
+<label>
+<input type="checkbox" id="termsCheck" onclick="toggleTerms()"> 
+I Agree Terms & Conditions
+</label>
 
-<input type="checkbox" id="agree" onclick="showTerms()">
-<label> I agree to Terms & Conditions</label>
+<div class="terms-box" id="termsBox">
 
-<div id="termsBox">
+<b>Terms & Conditions:</b><br><br>
 
-<b>Terms & Conditions</b><br><br>
-
-We provide daily market research and trading guidance.
-We always try to keep clients on the safe side with proper risk management.
-All services are based on market conditions.
-Past performance does not guarantee future results.
-Investment in market is subject to market risks.
-Please read all documents carefully before investing.
+We provide daily market support and professional advisory services.
+We focus on risk management and safe trading practices.
+Our goal is to give maximum possible support and transparency.
+Market investment is subject to risk.
+Past performance is not a guarantee of future returns.
+Clients must take decisions responsibly.
 
 </div>
 
-<button type="submit">Submit</button>
+<br>
+
+<button type="submit" id="submitBtn" disabled>Submit</button>
 
 </form>
 
 </div>
 
-
-<h2 class="sectionTitle">Our Subscription Plans</h2>
-
-
-<!-- PLANS START HERE (PART 2 CONTINUE) -->
-
-
+<!-- SCRIPT -->
 <script>
 
-function showTerms(){
-    var box = document.getElementById("termsBox");
-    if(box.style.display==="none"){
-        box.style.display="block";
-    }else{
-        box.style.display="none";
-    }
+/* ID PROOF VALIDATION */
+function changeID(){
+
+let type=document.getElementById("idType").value;
+let input=document.getElementById("idInput");
+
+input.disabled=false;
+input.value="";
+
+if(type=="aadhaar"){
+    input.placeholder="Enter 12 Digit Aadhaar";
+    input.pattern="[0-9]{12}";
+}
+else if(type=="pan"){
+    input.placeholder="Enter PAN (ABCDE1234F)";
+    input.pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}";
+}
 }
 
-/* FORM VALIDATION */
+/* TERMS SHOW */
+function toggleTerms(){
 
-document.getElementById("clientForm").addEventListener("submit",function(e){
+let box=document.getElementById("termsBox");
+let check=document.getElementById("termsCheck");
 
-    if(!document.getElementById("agree").checked){
-        alert("Please accept Terms & Conditions");
-        e.preventDefault();
-        return;
-    }
+if(check.checked){
+    box.style.display="block";
+    document.getElementById("submitBtn").disabled=false;
+}
+else{
+    box.style.display="none";
+    document.getElementById("submitBtn").disabled=true;
+}
 
-    var id = document.getElementById("idNumber").value;
+}
 
-    var type = document.getElementById("idType").value;
+/* LIVE MARKET API */
+const apiKey="e2e5ff8a05fd451bacc36bda601aaf81";
 
-    if(type==="Aadhar" && id.length!==12){
-        alert("Aadhar must be 12 digits");
-        e.preventDefault();
-        return;
-    }
+function loadMarket(){
 
-    if(type==="PAN" && id.length!==10){
-        alert("PAN must be 10 characters");
-        e.preventDefault();
-        return;
-    }
+fetch(`https://api.twelvedata.com/quote?symbol=NIFTY,BNF,SENSEX,GOLD,SILVER,CL&apikey=${apiKey}`)
+.then(res=>res.json())
+.then(data=>{
 
-    alert("Form Submitted Successfully!");
+document.getElementById("nifty").innerText="NIFTY: "+(data.NIFTY?.close || "--");
+document.getElementById("bank").innerText="BANKNIFTY: "+(data.BNF?.close || "--");
+document.getElementById("sensex").innerText="SENSEX: "+(data.SENSEX?.close || "--");
+
+document.getElementById("gold").innerText="GOLD: "+(data.GOLD?.close || "--");
+document.getElementById("silver").innerText="SILVER: "+(data.SILVER?.close || "--");
+document.getElementById("crude").innerText="CRUDE: "+(data.CL?.close || "--");
 
 });
 
-
-/* LIVE MARKET (DEMO DATA) */
-
-function updateMarket(){
-
-document.getElementById("nifty").innerText = (19500 + Math.random()*100).toFixed(2);
-document.getElementById("banknifty").innerText = (45000 + Math.random()*200).toFixed(2);
-document.getElementById("sensex").innerText = (66000 + Math.random()*150).toFixed(2);
-
-document.getElementById("gold").innerText = (62000 + Math.random()*100).toFixed(2);
-document.getElementById("silver").innerText = (75000 + Math.random()*150).toFixed(2);
-document.getElementById("crude").innerText = (6500 + Math.random()*50).toFixed(2);
-document.getElementById("gas").innerText = (240 + Math.random()*10).toFixed(2);
-
 }
 
-setInterval(updateMarket,10000);
-updateMarket();
+loadMarket();
+setInterval(loadMarket,60000);
 
 </script>
+
+</body>
+</html>
