@@ -7,6 +7,7 @@
 
 <style>
 
+/* BASIC */
 body{
 margin:0;
 font-family:Arial,Helvetica,sans-serif;
@@ -27,7 +28,7 @@ font-size:13px;
 .header{
 background:#fff;
 text-align:center;
-padding:20px;
+padding:15px;
 border-bottom:3px solid #8b1d1d;
 }
 
@@ -37,6 +38,11 @@ color:#8b1d1d;
 font-size:28px;
 }
 
+.header p{
+margin:3px 0;
+color:#555;
+}
+
 .sebi{
 display:inline-block;
 background:#8b1d1d;
@@ -44,13 +50,12 @@ color:#fff;
 padding:4px 12px;
 border-radius:15px;
 font-size:13px;
-margin-top:5px;
 }
 
 /* MENU */
 nav{
 background:#0b2d5c;
-padding:10px;
+padding:8px;
 text-align:center;
 }
 
@@ -61,24 +66,38 @@ text-decoration:none;
 font-weight:600;
 }
 
+nav a:hover{
+text-decoration:underline;
+}
+
+/* BANNER */
+.banner{
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url('https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg');
+background-size:cover;
+background-position:center;
+color:#fff;
+padding:110px 20px;
+text-align:center;
+}
+
 /* SECTION */
 section{
 max-width:1200px;
 margin:auto;
-padding:30px 15px;
+padding:35px 15px;
 }
 
 /* BOX */
 .box{
-background:#fff;
 padding:25px;
 border-radius:15px;
-margin-bottom:30px;
+margin-bottom:35px;
 box-shadow:0 5px 15px rgba(0,0,0,.12);
 }
 
 /* FORM */
-input,textarea,select{
+input,select,textarea{
 width:100%;
 padding:12px;
 margin-bottom:12px;
@@ -135,11 +154,25 @@ border-radius:20px;
 cursor:pointer;
 }
 
+/* COLORS */
+.c1{background:#fff3e0;}
+.c2{background:#ffe6e6;}
+.c3{background:#e8f8e8;}
+.c4{background:#e3f2fd;}
+.c5{background:#f3e5f5;}
+.c6{background:#ede7f6;}
+.c7{background:#fbe9e7;}
+.c8{background:#f1f8e9;}
+.c9{background:#e0f2f1;}
+.c10{background:#fafafa;}
+.c11{background:#eceff1;}
+.c12{background:#fce4ec;}
+
 /* DISCLAIMER */
 .disclaimer{
 background:#8b1d1d;
 color:#fff;
-padding:25px;
+padding:30px;
 border-radius:15px;
 line-height:1.6;
 }
@@ -150,346 +183,213 @@ background:#0b2d5c;
 color:#fff;
 text-align:center;
 padding:12px;
-font-size:13px;
 }
+
+#allPlans{display:none;}
 
 </style>
 </head>
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
 📞 7697611673 | ✉️ Globetech8518@gmail.com
 </div>
 
-<!-- HEADER -->
 <div class="header">
 <h1>GLOBE TECH PVT LTD</h1>
 <p>SEBI Registered Research Analyst</p>
 <div class="sebi">SEBI Reg. No: INZ000246569</div>
 </div>
 
-<!-- MENU -->
 <nav>
-<a href="#market">Live Market</a>
-<a href="#register">Register</a>
-<a href="#plans">Plans</a>
+<a href="#home">Home</a>
 <a href="#about">About</a>
+<a href="javascript:void(0)" onclick="openPlans()">Plans</a>
 <a href="#contact">Contact</a>
+<a href="#register">Register</a>
 </nav>
 
-<!-- LIVE MARKET -->
-<section class="box" id="market">
-
-<h3>📊 Live Market (Auto Update)</h3>
-
-<b>Equity</b>
-<p id="nifty">NIFTY: Loading...</p>
-<p id="bank">BANKNIFTY: Loading...</p>
-<p id="sensex">SENSEX: Loading...</p>
-
-<b>Commodity</b>
-<p id="gold">GOLD: Loading...</p>
-<p id="silver">SILVER: Loading...</p>
-<p id="crude">CRUDE: Loading...</p>
-<p id="gas">NATURAL GAS: Loading...</p>
-
-</section>
+<div class="banner" id="home">
+<h2>Trusted Stock Market Research</h2>
+<p>Equity • Commodity • Combo Advisory</p>
+</div>
 
 <!-- REGISTER -->
 <section class="box" id="register">
-
 <h3>Register Now</h3>
 
-<form onsubmit="return validateForm()">
+<form onsubmit="sendRegister(event)">
+<input id="rname" placeholder="Full Name" required>
+<input id="rmobile" placeholder="Mobile Number" required>
+<input id="remail" type="email" placeholder="Email ID" required>
 
-<input type="text" id="name" placeholder="Full Name" required>
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
-<input type="email" id="email" placeholder="Email ID" required>
-<textarea id="address" placeholder="Full Address" required></textarea>
-
-<!-- ID PROOF -->
-<label><b>ID Proof (Any One)</b></label>
-
-<select id="idType" onchange="showIdField()" required>
-<option value="">-- Select ID Proof --</option>
-<option value="aadhaar">Aadhaar Card</option>
-<option value="pan">PAN Card</option>
+<select id="rgender">
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
 </select>
 
-<input type="text" id="aadhaar"
-placeholder="Enter 12 Digit Aadhaar Number"
-style="display:none;" maxlength="12">
+<textarea id="raddress" placeholder="Full Address"></textarea>
 
-<input type="text" id="pan"
-placeholder="Enter PAN (ABCDE1234F)"
-style="display:none;" maxlength="10">
-
-<!-- TERMS -->
-<label style="font-weight:600;cursor:pointer;">
-<input type="checkbox" id="termsCheck">
- I agree to 
- <span onclick="toggleTerms()" style="color:#8b1d1d;text-decoration:underline;">
- Terms & Conditions
- </span>
-</label>
-
-<!-- TERMS BOX -->
-<div id="termsBox" style="
-display:none;
-margin-top:10px;
-padding:12px;
-border:1px solid #ccc;
-border-radius:8px;
-font-size:13px;
-background:#fafafa;
-max-height:150px;
-overflow-y:auto;
-">
-
-<b>Terms & Conditions</b><br><br>
-
-1. We provide daily market research and guidance.  
-2. Risk management is followed for safety.  
-3. No guaranteed profit.  
-4. Market investments involve risk.  
-5. Company is not responsible for losses.  
-6. Information must be correct.  
-7. Misuse may lead to termination.  
-8. Services are transparent.  
-9. Educational purpose only.  
-10. You agree to all policies.
-
-</div>
-
-<br>
-
-<button type="submit">Submit</button>
-
+<button type="submit">Register</button>
 </form>
-
-</section>
-
-<!-- PLANS -->
-<section class="box" id="plans">
-
-<h3>Service Plans (Sample)</h3>
-
-<div class="grid">
-
-<div class="card">
-<h4>Basic</h4>
-
-<table>
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>21000</td><td>3780</td><td>24780</td></tr>
-</table>
-
-<button onclick="sendPlan('Basic','1 Month',21000)">
-Select
-</button>
-</div>
-
-<div class="card">
-<h4>Standard</h4>
-
-<table>
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>40000</td><td>7200</td><td>47200</td></tr>
-</table>
-
-<button onclick="sendPlan('Standard','1 Month',40000)">
-Select
-</button>
-</div>
-
-<div class="card">
-<h4>Premium</h4>
-
-<table>
-<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
-<tr><td>61000</td><td>10980</td><td>71980</td></tr>
-</table>
-
-<button onclick="sendPlan('Premium','1 Month',61000)">
-Select
-</button>
-</div>
-
-</div>
-
 </section>
 
 <!-- ABOUT -->
 <section class="box" id="about">
-
 <h3>About Us</h3>
 
-<p>
-Globe Tech Pvt Ltd is a SEBI registered research company providing
-professional stock market advisory services.
-</p>
+<p>Globe Tech Pvt Ltd is a SEBI Registered Research Analyst company providing reliable stock market research since 2017.</p>
 
-<p>
-We specialize in Equity, Commodity and Portfolio Management with
-strong risk management and transparent working.
-</p>
+<p>We provide Equity, Commodity and Derivatives analysis with strong risk management.</p>
 
-<p>
-Our aim is to help clients grow their capital safely with discipline.
-</p>
-
+<ul>
+<li>Accurate Research Calls</li>
+<li>Dedicated Support</li>
+<li>Risk Management</li>
+<li>1500+ Clients</li>
+<li>Transparent Service</li>
+</ul>
 </section>
 
 <!-- DISCLAIMER -->
 <section class="disclaimer">
-
-<h3>Disclaimer</h3>
+<h3>⚠ Important Disclaimer</h3>
 
 <p>
-Market investments are subject to risk. We do not guarantee any profit.
-All recommendations are based on research and analysis.
-Clients must trade at their own risk.
+We do not guarantee profit. Market investments are subject to risk.
+We are not responsible for losses. Payments only to official accounts.
+Beware of fake calls.
 </p>
 
+<p><b>SEBI Reg. No: INZ000246569</b></p>
+</section>
+
+<!-- PLANS -->
+<section id="plans">
+<h3>Subscription Plans</h3>
+
+<div id="allPlans">
+
+<!-- BOX TEMPLATE -->
+<script>
+const plans = [
+/* EQUITY */
+["1 Month Equity",21000,40000,61000],
+["3 Month Equity",52500,100000,152500],
+["6 Month Equity",94500,180000,274500],
+["12 Month Equity",147000,280000,427000],
+
+/* COMMODITY */
+["1 Month Commodity",21000,40000,61000],
+["3 Month Commodity",52500,100000,152500],
+["6 Month Commodity",94500,180000,274500],
+["12 Month Commodity",147000,280000,427000],
+
+/* COMBO */
+["1 Month Combo",31000,51000,80000],
+["3 Month Combo",77500,127500,200000],
+["6 Month Combo",139500,229500,360000],
+["12 Month Combo",217000,357000,560000],
+];
+
+const colors=["c1","c2","c3","c4","c5","c6","c7","c8","c9","c10","c11","c12"];
+
+let html="";
+
+plans.forEach((p,i)=>{
+
+html+=`
+<div class="box ${colors[i]}">
+<h3>${p[0]}</h3>
+
+<div class="grid">
+
+${makeCard("Basic",p[1])}
+${makeCard("Standard",p[2])}
+${makeCard("Premium",p[3])}
+
+</div>
+</div>
+`;
+
+});
+
+document.write(html);
+
+function makeCard(name,price){
+
+let gst=Math.round(price*0.18);
+let total=price+gst;
+
+return `
+<div class="card">
+<h4>${name}</h4>
+
+<table>
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>${price}</td><td>${gst}</td><td>${total}</td></tr>
+</table>
+
+<button onclick="sendPlan('${name}','${price}','${gst}','${total}')">Select</button>
+</div>
+`;
+
+}
+</script>
+
+</div>
 </section>
 
 <!-- CONTACT -->
 <section class="box" id="contact">
-
 <h3>Contact Us</h3>
 
-<p><b>Mobile:</b> 7697611673</p>
-<p><b>Email:</b> Globetech8518@gmail.com</p>
-
-<p><b>Address:</b><br>
-Mangal City Mall, 4th Floor,<br>
-Vijay Nagar, Indore - 452010
-</p>
-
+<p>📞 7697611673</p>
+<p>📧 Globetech8518@gmail.com</p>
+<p>📍 Mangal City Mall, Vijay Nagar, Indore</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
 © 2026 Globe Tech Pvt Ltd | SEBI Registered
 </footer>
 
-<!-- SCRIPT -->
 <script>
 
-/* LIVE MARKET API */
-const API_KEY = "YOUR_API_KEY_HERE";
-
-async function loadMarket(){
-
-const symbols = {
-nifty:"NIFTY 50",
-bank:"BANKNIFTY",
-sensex:"SENSEX",
-gold:"XAU/USD",
-silver:"XAG/USD",
-crude:"WTI",
-gas:"NATURALGAS"
-};
-
-for(let id in symbols){
-
-let url=`https://api.twelvedata.com/price?symbol=${symbols[id]}&apikey=${API_KEY}`;
-
-let r=await fetch(url);
-let d=await r.json();
-
-if(d.price){
-document.getElementById(id).innerText=
-symbols[id]+" : "+d.price;
+/* OPEN PLANS */
+function openPlans(){
+document.getElementById("plans").scrollIntoView({behavior:"smooth"});
+document.getElementById("allPlans").style.display="block";
 }
 
+/* REGISTER */
+function sendRegister(e){
+
+e.preventDefault();
+
+let msg=
+"New Registration:%0A"+
+"Name: "+rname.value+
+"%0AMobile: "+rmobile.value+
+"%0AEmail: "+remail.value+
+"%0AAddress: "+raddress.value;
+
+window.open("https://wa.me/917697611673?text="+msg);
 }
 
-}
-
-loadMarket();
-setInterval(loadMarket,60000);
-
-
-/* ID PROOF SHOW */
-function showIdField(){
-
-let t=document.getElementById("idType").value;
-
-aadhaar.style.display="none";
-pan.style.display="none";
-
-if(t==="aadhaar") aadhaar.style.display="block";
-if(t==="pan") pan.style.display="block";
-
-}
-
-
-/* TERMS TOGGLE */
-function toggleTerms(){
-
-let b=document.getElementById("termsBox");
-
-b.style.display=(b.style.display==="none")?"block":"none";
-
-}
-
-
-/* FORM VALIDATION */
-function validateForm(){
-
-let type=idType.value;
-let ad=aadhaar.value.trim();
-let pn=pan.value.trim();
-let terms=termsCheck.checked;
-
-if(type===""){
-alert("Select ID Proof");
-return false;
-}
-
-if(type==="aadhaar" && !/^\d{12}$/.test(ad)){
-alert("Enter valid 12 digit Aadhaar");
-return false;
-}
-
-if(type==="pan" && !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(pn.toUpperCase())){
-alert("Enter valid PAN");
-return false;
-}
-
-if(!terms){
-alert("Accept Terms & Conditions");
-return false;
-}
-
-alert("Form Submitted Successfully!");
-return true;
-
-}
-
-
-/* PLAN WHATSAPP */
-function sendPlan(plan,duration,amount){
-
-let gst=Math.round(amount*0.18);
-let total=amount+gst;
+/* PLAN */
+function sendPlan(name,amt,gst,total){
 
 let msg=
 "Hello,%0A"+
-"I am interested in:%0A%0A"+
-"Plan: "+plan+"%0A"+
-"Duration: "+duration+"%0A"+
-"Amount: ₹"+amount+"%0A"+
-"GST: ₹"+gst+"%0A"+
-"Total: ₹"+total;
+"I am interested in:%0A"+
+name+
+"%0AAmount: "+amt+
+"%0AGST: "+gst+
+"%0ATotal: "+total;
 
-window.open(
-"https://wa.me/917697611673?text="+msg,
-"_blank"
-);
+window.open("https://wa.me/917697611673?text="+msg);
 
 }
 
