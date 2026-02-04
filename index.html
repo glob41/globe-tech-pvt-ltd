@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Globe Tech Pvt Ltd</title>
+<title>Trading Advisory Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -12,23 +12,29 @@ body{
   background:#f4f6f8;
   color:#333;
 }
+
 header{
   background:#0b2d5c;
   padding:22px;
   text-align:center;
+  color:#fff;
 }
+
 section{
   max-width:1100px;
   margin:auto;
   padding:35px 15px;
 }
+
 .box{
   background:#fff;
   padding:25px;
   border-radius:14px;
   margin-bottom:25px;
 }
+
 h2{color:#0b2d5c;margin-top:0}
+
 input,select,textarea{
   width:100%;
   padding:12px;
@@ -36,6 +42,7 @@ input,select,textarea{
   border:1px solid #ccc;
   border-radius:8px;
 }
+
 button{
   padding:12px 22px;
   background:#c79a63;
@@ -45,11 +52,13 @@ button{
   cursor:pointer;
   font-size:15px;
 }
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
+
 .card{
   background:#fff;
   padding:22px;
@@ -57,8 +66,7 @@ button{
   text-align:center;
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
-.green{color:green;font-weight:bold}
-.red{color:red;font-weight:bold}
+
 footer{
   background:#0b2d5c;
   color:#fff;
@@ -70,28 +78,33 @@ footer{
 
 <body>
 
+<!-- HEADER -->
 <header>
-  <div style="font-size:30px;font-weight:900;letter-spacing:1.5px;color:#ffffff;">
-    GLOBE TECH PVT LTD
+  <div style="font-size:30px;font-weight:900;">
+    TRADING ADVISORY SERVICES
   </div>
-  <div style="font-size:15px;color:#e5c28b;margin-top:6px;font-weight:600;">
-    SEBI Registered • Trusted Since 2017
+  <div style="font-size:15px;color:#e5c28b;margin-top:6px;">
+    SEBI Registered • Trusted Research
   </div>
 </header>
 
 <!-- REGISTER -->
 <section class="box">
 <h2>Register Now</h2>
+
 <form onsubmit="sendRegister(event)">
 <input id="rname" placeholder="Full Name" required>
 <input id="rmobile" placeholder="Mobile Number" required>
 <input id="remail" type="email" placeholder="Email ID" required>
+
 <select id="rgender">
 <option>Male</option>
 <option>Female</option>
 <option>Other</option>
 </select>
+
 <textarea id="raddress" placeholder="Full Address"></textarea>
+
 <button type="submit">Register</button>
 </form>
 </section>
@@ -99,22 +112,25 @@ footer{
 <!-- ABOUT -->
 <section class="box">
 <h2>About Us</h2>
+
 <p>
-Globe Tech Pvt Ltd is a <strong>SEBI Registered Stock Market Company</strong>
-established in the year <strong>2017</strong>.
+We are a professional equity and commodity research company providing
+trusted trading advisory services.
 </p>
+
 <p>
 We have successfully served more than
-<strong>12,000+ Happy Clients</strong> across India.
+<strong>1500+ Happy Clients</strong> across India.
 </p>
+
 <p>
-Our services focus on <strong>Equity, Derivatives, Options and MCX Commodities</strong>.
-We believe in transparency, disciplined trading and long-term wealth creation.
+Our focus is on disciplined trading and long term wealth creation.
 </p>
-<p><strong>SEBI Registration Number:</strong> INZ000246569</p>
+
+<p><strong>Address:</strong> Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
+
 <p style="font-size:13px;color:#555">
-⚠ Market investments are subject to market risks.
-Please read all scheme related documents carefully.
+⚠ Market investments are subject to risk.
 </p>
 </section>
 
@@ -125,85 +141,179 @@ Please read all scheme related documents carefully.
 <h3>📈 Equity Market (NSE / BSE)</h3>
 <ul>
 <li>Cash / Delivery</li>
-<li>Intraday Trading</li>
-<li>Futures & Options (F&O)</li>
-<li>Index Trading (NIFTY, BANK NIFTY)</li>
+<li>Intraday</li>
+<li>F&O</li>
+<li>Index Trading</li>
 </ul>
-<p><strong>Market Time:</strong> 9:15 AM – 3:30 PM</p>
+<p><b>Time:</b> 9:15 AM – 3:30 PM</p>
 
 <h3>🪙 Commodity Market (MCX)</h3>
 <ul>
 <li>Gold</li>
 <li>Silver</li>
-<li>Crude Oil</li>
+<li>Crude</li>
 <li>Natural Gas</li>
 </ul>
-<p><strong>Market Time:</strong> 9:00 AM – 11:30 PM</p>
+<p><b>Time:</b> 9:00 AM – 11:30 PM</p>
 </section>
 
 <!-- PLANS -->
 <section>
-<h2>Service Plans</h2>
+<h2>Subscription Plans</h2>
+
+<!-- EQUITY -->
+<h3>Equity Plans</h3>
 <div class="grid">
 
 <div class="card">
-<h3>Basic Plan</h3>
-<p><b>₹21,000 + GST / Month</b></p>
-<button onclick="plan('Basic Plan – ₹21,000 + GST / Month')">Select Plan</button>
+<h4>1 Month</h4>
+<p>Basic ₹21,000</p>
+<p>Standard ₹40,000</p>
+<p>Premium ₹61,000</p>
+<button onclick="plan('Equity 1 Month')">Select</button>
 </div>
 
 <div class="card">
-<h3>Standard Plan</h3>
-<p><b>₹45,000 + GST / Month</b></p>
-<button onclick="plan('Standard Plan – ₹45,000 + GST / Month')">Select Plan</button>
+<h4>3 Month</h4>
+<p>Basic ₹52,500</p>
+<p>Standard ₹1,00,000</p>
+<p>Premium ₹1,52,500</p>
+<button onclick="plan('Equity 3 Month')">Select</button>
 </div>
 
 <div class="card">
-<h3>Premium Plan</h3>
-<p>
-<b>₹60,000 + GST / Month</b><br>
-₹1,50,000 + GST / Quarterly
-</p>
-<button onclick="plan('Premium Plan – Monthly / Quarterly')">Select Plan</button>
+<h4>6 Month</h4>
+<p>Basic ₹94,500</p>
+<p>Standard ₹1,80,000</p>
+<p>Premium ₹2,74,500</p>
+<button onclick="plan('Equity 6 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>12 Month</h4>
+<p>Basic ₹1,47,000</p>
+<p>Standard ₹2,80,000</p>
+<p>Premium ₹4,27,000</p>
+<button onclick="plan('Equity 12 Month')">Select</button>
 </div>
 
 </div>
-</section>
 
-<!-- FII DII -->
-<section class="box">
-<h2>FII / DII Activity (Latest Available Data)</h2>
-<p>FII CM: <span class="red">-4,781.24</span></p>
-<p>DII CM: <span class="green">+5,217.28</span></p>
-<p>FII Index Futures: <span class="red">-231.59</span></p>
-<p>FII Index Options: <span class="red">-5,011.50</span></p>
+<br>
+
+<!-- COMMODITY -->
+<h3>Commodity Plans</h3>
+<div class="grid">
+
+<div class="card">
+<h4>1 Month</h4>
+<p>Basic ₹21,000</p>
+<p>Standard ₹40,000</p>
+<p>Premium ₹61,000</p>
+<button onclick="plan('Commodity 1 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>3 Month</h4>
+<p>Basic ₹52,500</p>
+<p>Standard ₹1,00,000</p>
+<p>Premium ₹1,52,500</p>
+<button onclick="plan('Commodity 3 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>6 Month</h4>
+<p>Basic ₹94,500</p>
+<p>Standard ₹1,80,000</p>
+<p>Premium ₹2,74,500</p>
+<button onclick="plan('Commodity 6 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>12 Month</h4>
+<p>Basic ₹1,47,000</p>
+<p>Standard ₹2,80,000</p>
+<p>Premium ₹4,27,000</p>
+<button onclick="plan('Commodity 12 Month')">Select</button>
+</div>
+
+</div>
+
+<br>
+
+<!-- COMBO -->
+<h3>Equity + Commodity Combo</h3>
+<div class="grid">
+
+<div class="card">
+<h4>1 Month</h4>
+<p>Basic ₹31,000</p>
+<p>Standard ₹51,000</p>
+<p>Premium ₹80,000</p>
+<button onclick="plan('Combo 1 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>3 Month</h4>
+<p>Basic ₹77,500</p>
+<p>Standard ₹1,27,500</p>
+<p>Premium ₹2,00,000</p>
+<button onclick="plan('Combo 3 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>6 Month</h4>
+<p>Basic ₹1,39,500</p>
+<p>Standard ₹2,29,500</p>
+<p>Premium ₹3,60,000</p>
+<button onclick="plan('Combo 6 Month')">Select</button>
+</div>
+
+<div class="card">
+<h4>12 Month</h4>
+<p>Basic ₹2,17,000</p>
+<p>Standard ₹3,57,000</p>
+<p>Premium ₹5,60,000</p>
+<button onclick="plan('Combo 12 Month')">Select</button>
+</div>
+
+</div>
+
 </section>
 
 <!-- CONTACT -->
 <section class="box">
 <h2>Contact Us</h2>
-<p>Email: <b>Globetech8518@gmail.com</b></p>
-<p>WhatsApp: <b>9977004118</b></p>
+
+<p>📍 Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
+<p>📞 7697611673</p>
+
 </section>
 
 <footer>
-© 2025 Globe Tech Pvt Ltd | SEBI Registered
+© 2026 Trading Advisory Services | All Rights Reserved
 </footer>
 
+<!-- WHATSAPP SYSTEM -->
 <script>
+
 function sendRegister(e){
 e.preventDefault();
+
 let msg="New Registration:%0A"+
 "Name: "+rname.value+
 "%0AMobile: "+rmobile.value+
 "%0AEmail: "+remail.value+
 "%0AGender: "+rgender.value+
 "%0AAddress: "+raddress.value;
-window.open("https://wa.me/919977004118?text="+msg);
+
+window.open("https://wa.me/917697611673?text="+msg);
 }
+
 function plan(p){
-window.open("https://wa.me/919977004118?text=Client%20interested%20in%20"+p);
+window.open("https://wa.me/917697611673?text=Client interested in "+p);
 }
+
 </script>
 
 </body>
