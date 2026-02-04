@@ -10,50 +10,67 @@
 /* BASIC */
 body{
 margin:0;
-font-family:Arial,sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 background:#f4f6f8;
 color:#333;
 }
 
 /* TOP BAR */
 .topbar{
-background:#8b1d1d;
+background:#111;
 color:#fff;
-padding:8px;
+padding:6px;
 text-align:center;
-font-size:14px;
+font-size:13px;
 }
 
 /* HEADER */
 .header{
 background:#fff;
 border-bottom:3px solid #8b1d1d;
+text-align:center;
+padding:15px 10px;
 }
 
-.header-inner{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 15px;
-}
-
-.logo{
-font-size:22px;
-font-weight:900;
+.header h1{
+margin:0;
 color:#8b1d1d;
+font-size:28px;
+letter-spacing:1px;
+}
+
+.header p{
+margin:4px 0;
+font-size:14px;
+color:#555;
+}
+
+.sebi{
+background:#8b1d1d;
+color:#fff;
+display:inline-block;
+padding:4px 12px;
+border-radius:12px;
+font-size:13px;
+margin-top:5px;
+}
+
+/* MENU */
+nav{
+background:#0b2d5c;
+text-align:center;
+padding:8px 0;
 }
 
 nav a{
-margin-left:15px;
+color:#fff;
+margin:0 15px;
 text-decoration:none;
-color:#333;
 font-weight:600;
 }
 
 nav a:hover{
-color:#8b1d1d;
+text-decoration:underline;
 }
 
 /* BANNER */
@@ -63,19 +80,14 @@ linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
 url('https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg');
 background-size:cover;
 background-position:center;
-padding:130px 20px;
-text-align:center;
 color:#fff;
+padding:120px 20px;
+text-align:center;
 }
 
-.banner h1{
-font-size:36px;
-font-weight:900;
-}
-
-.banner p{
-font-size:18px;
-margin:15px 0;
+.banner h2{
+font-size:34px;
+margin-bottom:10px;
 }
 
 /* SECTION */
@@ -88,11 +100,12 @@ padding:40px 15px;
 .box{
 background:#fff;
 padding:25px;
-border-radius:14px;
-margin-bottom:30px;
+border-radius:15px;
+margin-bottom:35px;
+box-shadow:0 6px 15px rgba(0,0,0,.1);
 }
 
-h2{
+h3{
 color:#8b1d1d;
 }
 
@@ -105,22 +118,11 @@ border:1px solid #ccc;
 border-radius:8px;
 }
 
-/* BUTTON */
-button{
-background:#8b1d1d;
-color:#fff;
-border:none;
-padding:10px 22px;
-border-radius:22px;
-cursor:pointer;
-}
-
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:20px;
-margin-bottom:30px;
 }
 
 @media(max-width:768px){
@@ -129,50 +131,75 @@ grid-template-columns:1fr;
 }
 }
 
-/* CARD */
+/* PLAN CARD */
 .card{
 background:#fff;
-padding:22px;
-border-radius:16px;
+border-radius:14px;
+padding:18px;
 text-align:center;
-box-shadow:0 6px 18px rgba(0,0,0,.12);
+box-shadow:0 4px 12px rgba(0,0,0,.12);
 transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 12px 28px rgba(0,0,0,.2);
+transform:translateY(-4px);
 }
 
-.card h4{
-margin-bottom:8px;
+/* PRICE TABLE */
+.price-table{
+width:100%;
+border-collapse:collapse;
+margin:10px 0;
+font-size:14px;
 }
 
-.card p{
-font-size:20px;
-font-weight:700;
-color:#8b1d1d;
+.price-table th,
+.price-table td{
+border:1px solid #ddd;
+padding:6px;
+text-align:center;
 }
+
+.price-table th{
+background:#8b1d1d;
+color:#fff;
+}
+
+/* BUTTON */
+button{
+background:#8b1d1d;
+color:#fff;
+border:none;
+padding:8px 18px;
+border-radius:20px;
+cursor:pointer;
+font-size:13px;
+}
+
+/* COLOR BOXES */
+.equity{border-top:5px solid orange;}
+.commodity{border-top:5px solid red;}
+.combo{border-top:5px solid green;}
 
 /* DISCLAIMER */
 .disclaimer{
 background:#8b1d1d;
 color:#fff;
 padding:30px;
-border-radius:12px;
+border-radius:15px;
+line-height:1.6;
 }
 
-/* HIDE PLANS */
-#allPlans{
-display:none;
-}
+/* HIDE */
+#allPlans{display:none}
 
 /* FOOTER */
 footer{
 background:#0b2d5c;
 color:#fff;
 text-align:center;
-padding:15px;
+padding:12px;
+font-size:13px;
 }
 
 </style>
@@ -187,10 +214,12 @@ padding:15px;
 
 <!-- HEADER -->
 <div class="header">
-<div class="header-inner">
+<h1>GLOBE TECH PVT LTD</h1>
+<p>SEBI Registered Research Analyst</p>
+<div class="sebi">SEBI Reg. No: INZ000246569</div>
+</div>
 
-<div class="logo">Globe Tech Pvt Ltd</div>
-
+<!-- MENU -->
 <nav>
 <a href="#home">Home</a>
 <a href="#about">About</a>
@@ -199,22 +228,17 @@ padding:15px;
 <a href="#register">Register</a>
 </nav>
 
-</div>
-</div>
-
 <!-- BANNER -->
 <div class="banner" id="home">
-<h1>Trusted SEBI Registered Research</h1>
-<p>Professional Equity & Commodity Advisory</p>
+<h2>Trusted Stock Market Research</h2>
+<p>Equity • Commodity • Combo Advisory</p>
 </div>
 
 <!-- REGISTER -->
 <section class="box" id="register">
-
-<h2>Register Now</h2>
+<h3>Register Now</h3>
 
 <form onsubmit="sendRegister(event)">
-
 <input id="rname" placeholder="Full Name" required>
 <input id="rmobile" placeholder="Mobile Number" required>
 <input id="remail" type="email" placeholder="Email ID" required>
@@ -228,69 +252,63 @@ padding:15px;
 <textarea id="raddress" placeholder="Full Address"></textarea>
 
 <button type="submit">Register</button>
-
 </form>
 </section>
 
 <!-- ABOUT -->
 <section class="box" id="about">
+<h3>About Us</h3>
 
-<h2>About Us</h2>
+<p>Globe Tech Pvt Ltd is a SEBI Registered Research Analyst company providing reliable market research services since 2017.</p>
 
-<p><b>Globe Tech Pvt Ltd</b> is a SEBI Registered Research Company since 2017.</p>
+<p>We specialize in Equity, Commodity, and Derivatives analysis with strong risk management.</p>
 
-<p>1500+ satisfied clients across India.</p>
+<p>Our services include intraday calls, positional calls, portfolio guidance, and market reports.</p>
 
-<p>We provide ethical and transparent market research.</p>
-
-<p><b>SEBI No:</b> INZ000246569</p>
-
-<p><b>Address:</b> Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
-
+<p><b>Why Choose Us?</b></p>
+<ul>
+<li>Accurate research-based calls</li>
+<li>Dedicated support team</li>
+<li>Transparent services</li>
+<li>Risk management guidance</li>
+<li>1500+ satisfied clients</li>
+</ul>
 </section>
 
 <!-- DISCLAIMER -->
 <section class="disclaimer">
+<h3>⚠ Important Disclaimer</h3>
 
-<h2>⚠ Important Disclaimer</h2>
+<p>
+All information provided is for educational purposes only. We do not guarantee profits. Market investments are subject to risks.
+We are not responsible for any financial losses.
+Payments only to official accounts. Beware of fake calls.
+</p>
 
-<ul>
-<li>Market investments are subject to risk</li>
-<li>No guaranteed returns</li>
-<li>No portfolio management</li>
-<li>Payments only to company account</li>
-<li>Beware of fake calls</li>
-</ul>
-
+<p><b>SEBI Reg. No: INZ000246569</b></p>
 </section>
 
 <!-- PLANS -->
 <section id="plans">
 
-<h2>Subscription Plans</h2>
+<h3>Subscription Plans</h3>
 
 <div id="allPlans">
 
-<h3>📈 Equity / Commodity Plans</h3>
-
+<!-- EQUITY -->
+<div class="box equity">
+<h3>📈 Equity Plans</h3>
 <div class="grid">
 
-<div class="card"><h4>1 Month - Basic</h4><p>₹21,000 + GST</p><button onclick="sendPlan('1 Month Basic ₹21,000')">Select</button></div>
-<div class="card"><h4>1 Month - Standard</h4><p>₹40,000 + GST</p><button onclick="sendPlan('1 Month Standard ₹40,000')">Select</button></div>
-<div class="card"><h4>1 Month - Premium</h4><p>₹61,000 + GST</p><button onclick="sendPlan('1 Month Premium ₹61,000')">Select</button></div>
+<div class="card" data-price="21000"><h4>1 Month - Basic</h4><table class="price-table"><tr><th>Amount</th><th>GST</th><th>Total</th></tr><tr><td class="base"></td><td class="gst"></td><td class="total"></td></tr></table><button onclick="sendPlan(this)">Select</button></div>
 
-<div class="card"><h4>3 Month - Basic</h4><p>₹52,500 + GST</p><button onclick="sendPlan('3 Month Basic ₹52,500')">Select</button></div>
-<div class="card"><h4>3 Month - Standard</h4><p>₹1,00,000 + GST</p><button onclick="sendPlan('3 Month Standard ₹1,00,000')">Select</button></div>
-<div class="card"><h4>3 Month - Premium</h4><p>₹1,52,500 + GST</p><button onclick="sendPlan('3 Month Premium ₹1,52,500')">Select</button></div>
+<div class="card" data-price="40000"><h4>1 Month - Standard</h4><table class="price-table"><tr><th>Amount</th><th>GST</th><th>Total</th></tr><tr><td class="base"></td><td class="gst"></td><td class="total"></td></tr></table><button onclick="sendPlan(this)">Select</button></div>
 
-<div class="card"><h4>6 Month - Basic</h4><p>₹94,500 + GST</p><button onclick="sendPlan('6 Month Basic ₹94,500')">Select</button></div>
-<div class="card"><h4>6 Month - Standard</h4><p>₹1,80,000 + GST</p><button onclick="sendPlan('6 Month Standard ₹1,80,000')">Select</button></div>
-<div class="card"><h4>6 Month - Premium</h4><p>₹2,74,500 + GST</p><button onclick="sendPlan('6 Month Premium ₹2,74,500')">Select</button></div>
+<div class="card" data-price="61000"><h4>1 Month - Premium</h4><table class="price-table"><tr><th>Amount</th><th>GST</th><th>Total</th></tr><tr><td class="base"></td><td class="gst"></td><td class="total"></td></tr></table><button onclick="sendPlan(this)">Select</button></div>
 
-<div class="card"><h4>12 Month - Basic</h4><p>₹1,47,000 + GST</p><button onclick="sendPlan('12 Month Basic ₹1,47,000')">Select</button></div>
-<div class="card"><h4>12 Month - Standard</h4><p>₹2,80,000 + GST</p><button onclick="sendPlan('12 Month Standard ₹2,80,000')">Select</button></div>
-<div class="card"><h4>12 Month - Premium</h4><p>₹4,27,000 + GST</p><button onclick="sendPlan('12 Month Premium ₹4,27,000')">Select</button></div>
+<!-- Add remaining Equity, Commodity, Combo plans similarly -->
 
+</div>
 </div>
 
 </div>
@@ -298,13 +316,11 @@ padding:15px;
 
 <!-- CONTACT -->
 <section class="box" id="contact">
-
-<h2>Contact Us</h2>
+<h3>Contact Us</h3>
 
 <p>📞 7697611673</p>
 <p>📧 Globetech8518@gmail.com</p>
-<p>📍 Mangal City Mall, Vijay Nagar, Indore</p>
-
+<p>📍 Mangal City Mall, 4th Floor, Vijay Nagar, Indore – 452010</p>
 </section>
 
 <!-- FOOTER -->
@@ -316,14 +332,27 @@ padding:15px;
 
 /* OPEN PLANS */
 function openPlans(){
-
-document.getElementById("plans").scrollIntoView({
-behavior:"smooth"
-});
-
+document.getElementById("plans").scrollIntoView({behavior:"smooth"});
 document.getElementById("allPlans").style.display="block";
-
 }
+
+/* GST CALC */
+function calculateGST(){
+
+document.querySelectorAll(".card").forEach(card=>{
+
+let base=parseInt(card.dataset.price);
+let gst=Math.round(base*0.18);
+let total=base+gst;
+
+card.querySelector(".base").innerText=base;
+card.querySelector(".gst").innerText=gst;
+card.querySelector(".total").innerText=total;
+
+});
+}
+
+window.onload=calculateGST;
 
 /* REGISTER */
 function sendRegister(e){
@@ -339,17 +368,24 @@ let msg=
 "%0AAddress: "+raddress.value;
 
 window.open("https://wa.me/917697611673?text="+msg);
-
 }
 
 /* PLAN */
-function sendPlan(plan){
+function sendPlan(btn){
+
+let card=btn.parentElement;
+let title=card.querySelector("h4").innerText;
+let base=card.querySelector(".base").innerText;
+let gst=card.querySelector(".gst").innerText;
+let total=card.querySelector(".total").innerText;
 
 let msg=
 "Hello,%0A"+
 "I am interested in:%0A"+
-"Plan: "+plan+
-"%0A%0APlease contact me.";
+title+
+"%0AAmount: "+base+
+"%0AGST: "+gst+
+"%0ATotal: "+total;
 
 window.open("https://wa.me/917697611673?text="+msg);
 
