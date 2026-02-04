@@ -282,3 +282,318 @@ setInterval(loadMarket,60000);
 
 </body>
 </html>
+<!-- ================= PLANS SECTION ================= -->
+
+<section id="plans-section">
+
+<h2 style="text-align:center;color:#8b1d1d;margin-top:40px;">
+Our Subscription Plans
+</h2>
+
+<div style="text-align:center;margin:15px;">
+<button onclick="togglePlans()" class="main-btn">
+View / Hide Plans
+</button>
+</div>
+
+<div id="plansContainer" style="display:none;">
+
+<!-- ================= CSS ================= -->
+
+<style>
+
+.plan-box{
+margin:25px auto;
+max-width:900px;
+padding:20px;
+border-radius:15px;
+color:#fff;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.plan-title{
+text-align:center;
+font-size:22px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.plan-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.plan-card{
+background:#fff;
+color:#333;
+padding:15px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.plan-card h4{
+margin-bottom:10px;
+color:#8b1d1d;
+}
+
+.plan-table{
+width:100%;
+border-collapse:collapse;
+margin-bottom:10px;
+}
+
+.plan-table th{
+background:#8b1d1d;
+color:#fff;
+padding:6px;
+}
+
+.plan-table td{
+border:1px solid #ccc;
+padding:6px;
+}
+
+.select-btn{
+background:#8b1d1d;
+color:#fff;
+border:none;
+padding:8px 18px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.select-btn:hover{
+opacity:0.9;
+}
+
+.main-btn{
+background:#8b1d1d;
+color:#fff;
+border:none;
+padding:10px 25px;
+border-radius:25px;
+font-size:15px;
+cursor:pointer;
+}
+
+</style>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function togglePlans(){
+let box=document.getElementById("plansContainer");
+box.style.display = box.style.display==="none"?"block":"none";
+}
+
+function sendWhatsApp(category,month,type,amount){
+
+let gst = Math.round(amount*0.18);
+let total = amount + gst;
+
+let msg =
+"Hello,%0A"+
+"Plan: "+category+"%0A"+
+"Duration: "+month+"%0A"+
+"Type: "+type+"%0A%0A"+
+"Amount: "+amount+"%0A"+
+"GST: "+gst+"%0A"+
+"Total: "+total;
+
+let phone="919977004118"; // apna number change kar sakte ho
+
+window.open("https://wa.me/"+phone+"?text="+msg,"_blank");
+}
+
+</script>
+
+
+<!-- ================= BOXES ================= -->
+
+
+<!-- ===== EQUITY ===== -->
+
+<!-- 1 MONTH -->
+<div class="plan-box" style="background:#ff9800;">
+<div class="plan-title">Equity - 1 Month</div>
+
+<div class="plan-grid">
+
+<div class="plan-card">
+<h4>Basic</h4>
+<table class="plan-table">
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>21000</td><td>3780</td><td>24780</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','1 Month','Basic',21000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Standard</h4>
+<table class="plan-table">
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>40000</td><td>7200</td><td>47200</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','1 Month','Standard',40000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Premium</h4>
+<table class="plan-table">
+<tr><th>Amount</th><th>GST</th><th>Total</th></tr>
+<tr><td>61000</td><td>10980</td><td>71980</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','1 Month','Premium',61000)">
+Select
+</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- 3 MONTH -->
+<div class="plan-box" style="background:#f44336;">
+<div class="plan-title">Equity - 3 Month</div>
+
+<div class="plan-grid">
+
+<div class="plan-card">
+<h4>Basic</h4>
+<table class="plan-table">
+<tr><td>52500</td><td>9450</td><td>61950</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','3 Month','Basic',52500)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Standard</h4>
+<table class="plan-table">
+<tr><td>90000</td><td>16200</td><td>106200</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','3 Month','Standard',90000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Premium</h4>
+<table class="plan-table">
+<tr><td>135000</td><td>24300</td><td>159300</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','3 Month','Premium',135000)">
+Select
+</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- 6 MONTH -->
+<div class="plan-box" style="background:#4caf50;">
+<div class="plan-title">Equity - 6 Month</div>
+
+<div class="plan-grid">
+
+<div class="plan-card">
+<h4>Basic</h4>
+<table class="plan-table">
+<tr><td>95000</td><td>17100</td><td>112100</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','6 Month','Basic',95000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Standard</h4>
+<table class="plan-table">
+<tr><td>160000</td><td>28800</td><td>188800</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','6 Month','Standard',160000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Premium</h4>
+<table class="plan-table">
+<tr><td>220000</td><td>39600</td><td>259600</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','6 Month','Premium',220000)">
+Select
+</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- 12 MONTH -->
+<div class="plan-box" style="background:#2196f3;">
+<div class="plan-title">Equity - 12 Month</div>
+
+<div class="plan-grid">
+
+<div class="plan-card">
+<h4>Basic</h4>
+<table class="plan-table">
+<tr><td>175000</td><td>31500</td><td>206500</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','12 Month','Basic',175000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Standard</h4>
+<table class="plan-table">
+<tr><td>280000</td><td>50400</td><td>330400</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','12 Month','Standard',280000)">
+Select
+</button>
+</div>
+
+<div class="plan-card">
+<h4>Premium</h4>
+<table class="plan-table">
+<tr><td>390000</td><td>70200</td><td>460200</td></tr>
+</table>
+<button class="select-btn"
+onclick="sendWhatsApp('Equity','12 Month','Premium',390000)">
+Select
+</button>
+</div>
+
+</div>
+</div>
+
+
+<!-- ========== SAME STRUCTURE FOR COMMODITY & EQUITY+COMMODITY ========= -->
+<!-- Agar chaho to next message me mai wo bhi generate kar deta hoon -->
+
+</div>
+</section>
