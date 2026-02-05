@@ -215,27 +215,46 @@ padding:12px;
 <p>Equity • Commodity • Combo Advisory</p>
 </div>
 
-<!-- REGISTER -->
+<!-- REGISTER START -->
 <section class="box" id="register">
 <h3>Register Now</h3>
 
 <form onsubmit="sendRegister(event)">
 
-<input id="rname" placeholder="Full Name" required>
+<!-- NAME -->
+<input type="text" id="rname" placeholder="Full Name" required>
 
-<input id="rmobile" type="tel" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+<!-- MOBILE -->
+<input type="tel" id="rmobile" placeholder="Mobile Number" pattern="[0-9]{10}" required>
 
-<input id="remail" type="email" placeholder="Email ID" required>
+<!-- EMAIL -->
+<input type="email" id="remail" placeholder="Email ID" required>
 
-<textarea id="raddress" placeholder="Full Address" required></textarea>
-
-<select id="idType" required onchange="changeID()">
-  <option value="">Select ID Proof</option>
-  <option value="aadhaar">Aadhaar Card</option>
-  <option value="pan">PAN Card</option>
+<!-- GENDER -->
+<select id="rgender" required>
+  <option value="">Select Gender</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+  <option value="Other">Other</option>
 </select>
 
-<input id="idNumber" placeholder="Select ID Type First" disabled required>
+<!-- ADDRESS -->
+<textarea id="raddress" placeholder="Full Address" required></textarea>
+
+<!-- ID PROOF -->
+<select id="idType" required onchange="enableIdField()">
+  <option value="">Select ID Proof</option>
+  <option value="Aadhaar">Aadhaar Card</option>
+  <option value="PAN">PAN Card</option>
+</select>
+
+<input 
+  type="text"
+  id="idNumber"
+  placeholder="Select ID Type First"
+  disabled
+  required
+>
 
 <!-- TERMS -->
 <div style="margin:12px 0;font-size:14px;">
@@ -262,22 +281,88 @@ line-height:1.6;
 
 <b>Terms & Conditions</b><br><br>
 
-• We provide research and guidance only.<br>
+• We provide market research and guidance only.<br>
 • No guaranteed profit is promised.<br>
 • Trading involves market risks.<br>
-• Clients are responsible for decisions.<br>
-• Company is not liable for losses.<br>
+• Clients are responsible for their own decisions.<br>
+• Company is not liable for any losses.<br>
+• Past performance does not guarantee future profits.<br>
 • Services follow SEBI guidelines.<br>
-• Data is kept confidential.<br>
-• Fees are non-refundable.
+• Client data is kept confidential.<br>
+• Fees once paid are non-refundable.
 
 </div>
 
 </div>
 
+<!-- SUBMIT -->
 <button type="submit">Register</button>
 
 </form>
+
+<!-- FORM SCRIPT -->
+<script>
+
+function enableIdField(){
+
+  let type = document.getElementById("idType").value;
+  let input = document.getElementById("idNumber");
+
+  input.disabled = false;
+  input.value = "";
+
+  if(type === "Aadhaar"){
+    input.placeholder = "Enter 12 Digit Aadhaar Number";
+    input.pattern = "[0-9]{12}";
+    input.maxLength = 12;
+  }
+
+  else if(type === "PAN"){
+    input.placeholder = "Enter PAN (ABCDE1234F)";
+    input.pattern = "[A-Z]{5}[0-9]{4}[A-Z]{1}";
+    input.maxLength = 10;
+  }
+
+  else{
+    input.disabled = true;
+    input.placeholder = "Select ID Type First";
+  }
+}
+
+function toggleTerms(){
+
+  let box = document.getElementById("termsBox");
+
+  box.style.display =
+  (box.style.display === "none") ? "block" : "none";
+}
+
+function sendRegister(e){
+
+  e.preventDefault();
+
+  if(!document.getElementById("terms").checked){
+    alert("Please accept Terms & Conditions");
+    return;
+  }
+
+  let msg =
+  "New Registration:%0A"+
+  "Name: "+rname.value+
+  "%0AMobile: "+rmobile.value+
+  "%0AEmail: "+remail.value+
+  "%0AGender: "+rgender.value+
+  "%0AAddress: "+raddress.value+
+  "%0AID Type: "+idType.value+
+  "%0AID No: "+idNumber.value;
+
+  window.open("https://wa.me/917697611673?text="+msg);
+}
+
+</script>
+
+</section>
+<!-- REGISTER END -->
 </section>
 
 <!-- ABOUT -->
