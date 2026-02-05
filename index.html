@@ -220,19 +220,63 @@ padding:12px;
 <h3>Register Now</h3>
 
 <form onsubmit="sendRegister(event)">
+
 <input id="rname" placeholder="Full Name" required>
-<input id="rmobile" placeholder="Mobile Number" required>
+
+<input id="rmobile" type="tel" placeholder="Mobile Number" pattern="[0-9]{10}" required>
+
 <input id="remail" type="email" placeholder="Email ID" required>
 
-<select id="rgender">
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
+<textarea id="raddress" placeholder="Full Address" required></textarea>
+
+<select id="idType" required onchange="changeID()">
+  <option value="">Select ID Proof</option>
+  <option value="aadhaar">Aadhaar Card</option>
+  <option value="pan">PAN Card</option>
 </select>
 
-<textarea id="raddress" placeholder="Full Address"></textarea>
+<input id="idNumber" placeholder="Select ID Type First" disabled required>
+
+<!-- TERMS -->
+<div style="margin:12px 0;font-size:14px;">
+
+<input type="checkbox" id="terms" required>
+
+<label>
+I agree to 
+<a href="javascript:void(0)" onclick="toggleTerms()" style="color:#8b1d1d;">
+Terms & Conditions
+</a>
+</label>
+
+<div id="termsBox" style="
+display:none;
+margin-top:8px;
+padding:14px;
+background:#fafafa;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:13px;
+line-height:1.6;
+">
+
+<b>Terms & Conditions</b><br><br>
+
+• We provide research and guidance only.<br>
+• No guaranteed profit is promised.<br>
+• Trading involves market risks.<br>
+• Clients are responsible for decisions.<br>
+• Company is not liable for losses.<br>
+• Services follow SEBI guidelines.<br>
+• Data is kept confidential.<br>
+• Fees are non-refundable.
+
+</div>
+
+</div>
 
 <button type="submit">Register</button>
+
 </form>
 </section>
 
