@@ -216,33 +216,56 @@ padding:12px;
 </div>
 <!-- LIVE MARKET START -->
 
-<div style="width:100%; height:450px; margin:20px 0;">
+<div style="width:100%; margin:20px 0;">
 
   <div class="tradingview-widget-container">
-    <div id="tv_nifty"></div>
-  </div>
+    <div class="tradingview-widget-container__widget"></div>
 
-  <!-- TradingView Library -->
-  <script src="https://s3.tradingview.com/tv.js"></script>
-
-  <!-- Widget Code -->
-  <script type="text/javascript">
-    new TradingView.widget({
-      "width": "100%",
-      "height": 450,
-      "symbol": "NSE:NIFTY",
-      "interval": "5",
-      "timezone": "Asia/Kolkata",
-      "theme": "light",
-      "style": "1",
+    <script type="text/javascript" 
+    src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js"
+    async>
+    {
+      "colorTheme": "light",
+      "dateRange": "1D",
+      "showChart": false,
       "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "allow_symbol_change": false,
-      "hide_side_toolbar": true,
-      "container_id": "tv_nifty"
-    });
-  </script>
+      "width": "100%",
+      "height": "500",
+      "largeChartUrl": "",
+      "isTransparent": false,
+      "showSymbolLogo": true,
+      "tabs": [
+        {
+          "title": "Indian Indices",
+          "symbols": [
+            { "s": "NSE:NIFTY", "d": "Nifty 50" },
+            { "s": "NSE:BANKNIFTY", "d": "Bank Nifty" },
+            { "s": "NSE:FINNIFTY", "d": "Fin Nifty" },
+            { "s": "NSE:MIDCPNIFTY", "d": "Midcap Nifty" }
+          ]
+        },
+        {
+          "title": "Equity Stocks",
+          "symbols": [
+            { "s": "NSE:RELIANCE", "d": "Reliance" },
+            { "s": "NSE:TCS", "d": "TCS" },
+            { "s": "NSE:HDFCBANK", "d": "HDFC Bank" },
+            { "s": "NSE:INFY", "d": "Infosys" }
+          ]
+        },
+        {
+          "title": "Commodity",
+          "symbols": [
+            { "s": "MCX:GOLD1!", "d": "Gold" },
+            { "s": "MCX:SILVER1!", "d": "Silver" },
+            { "s": "MCX:CRUDEOIL1!", "d": "Crude Oil" },
+            { "s": "MCX:NATURALGAS1!", "d": "Natural Gas" }
+          ]
+        }
+      ]
+    }
+    </script>
+  </div>
 
 </div>
 
