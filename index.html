@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+hi<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -235,39 +235,52 @@ padding:12px;
 <script>
 async function loadMarket() {
   try {
-
     let res = await fetch("https://globe-tech-pvt-ltd.onrender.com/live");
 
-    if (!res.ok) {
-      throw new Error("Server Error");
-    }
+    if (!res.ok) throw new Error("Server Error");
 
     let data = await res.json();
 
-    if (data.error) {
-      document.getElementById("marketData").innerHTML =
-        "❌ " + data.error;
-      return;
+    let nifty = data.data["NSE_INDEX:Nifty 50"];
+    let bank = data.data["NSE_INDEX:Nifty Bank"];
+    let sensex = data.data["BSE_INDEX:SENSEX"];
+
+    function box(name, obj) {
+      if (!obj) return "";
+
+      let color = obj.change >= 0 ? "lime" : "red";
+      let arrow = obj.change >= 0 ? "▲" : "▼";
+
+      return `
+      <div style="margin:10px;padding:10px;background:#000;border-radius:8px">
+        <b style="color:white">${name}</b><br>
+        <span style="color:${color};font-size:18px">
+          ${arrow} ${obj.last_price}
+        </span><br>
+        <small style="color:white">
+          ${obj.change} (${obj.change_percent}%)
+        </small><br>
+        <small style="color:#aaa">
+          H:${obj.high} | L:${obj.low}
+        </small>
+      </div>`;
     }
 
-    let price = data.data["NSE_INDEX:Nifty 50"].last_price;
-
     document.getElementById("marketData").innerHTML =
-      "✅ NIFTY 50 : <b>" + price + "</b>";
+      box("NIFTY 50", nifty) +
+      box("BANKNIFTY", bank) +
+      box("SENSEX", sensex);
 
   } catch (err) {
-
     document.getElementById("marketData").innerHTML =
       "❌ Server Not Responding";
-
-    console.log(err);
   }
 }
 
-// Auto load
+// Auto Load
 loadMarket();
 
-// Auto refresh every 10 sec
+// Refresh Every 10 sec
 setInterval(loadMarket, 10000);
 </script>
 
