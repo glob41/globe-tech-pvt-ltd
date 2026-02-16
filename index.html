@@ -214,26 +214,16 @@ padding:12px;
 <h2>Trusted Stock Market Research</h2>
 <p>Equity • Commodity • Combo Advisory</p>
 </div>
-<!-- LIVE MARKET START -->
-
-<section style="padding:20px; background:#fff; border-radius:10px;">
-  <h2>📈 Live Market (Upstox)</h2>
-
-  <button onclick="loadMarket()"
-    style="padding:10px 20px; background:green; color:#fff; border:none; border-radius:5px;">
-    Refresh Data
-  </button>
-
-  <div id="marketData"
-    style="margin-top:15px; background:#000; color:#0f0; padding:15px; border-radius:5px; font-size:18px;">
-    Loading...
-  </div>
-</section>
-
 <script>
 async function loadMarket() {
   try {
+
     let res = await fetch("https://globe-tech-pvt-ltd.onrender.com/live");
+
+    if (!res.ok) {
+      throw new Error("Server Error");
+    }
+
     let data = await res.json();
 
     if (data.error) {
@@ -245,11 +235,14 @@ async function loadMarket() {
     let price = data.data["NSE_INDEX:Nifty 50"].last_price;
 
     document.getElementById("marketData").innerHTML =
-      "NIFTY 50 : <b>" + price + "</b>";
+      "✅ NIFTY 50 : <b>" + price + "</b>";
 
   } catch (err) {
+
     document.getElementById("marketData").innerHTML =
       "❌ Server Not Responding";
+
+    console.log(err);
   }
 }
 
@@ -259,8 +252,6 @@ loadMarket();
 // Auto refresh every 10 sec
 setInterval(loadMarket, 10000);
 </script>
-
-<!-- LIVE MARKET END -->
 <!-- REGISTER START -->
 <section class="box" id="register">
 <h3>Register Now</h3>
