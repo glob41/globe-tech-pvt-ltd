@@ -219,15 +219,15 @@ padding:12px;
 <section style="padding:20px; background:#fff; border-radius:10px;">
   <h2>📈 Live Market (Upstox)</h2>
 
-  <button onclick="loadMarket()" 
-    style="padding:10px 15px; background:green; color:#fff; border:none; border-radius:5px;">
+  <button onclick="loadMarket()"
+    style="padding:10px 20px; background:green; color:#fff; border:none; border-radius:5px;">
     Refresh Data
   </button>
 
-  <pre id="marketData"
-    style="margin-top:15px; background:#000; color:#0f0; padding:15px; height:300px; overflow:auto;">
-Loading...
-  </pre>
+  <div id="marketData"
+    style="margin-top:15px; background:#000; color:#0f0; padding:15px; border-radius:5px; font-size:18px;">
+    Loading...
+  </div>
 </section>
 
 <script>
@@ -236,16 +236,28 @@ async function loadMarket() {
     let res = await fetch("https://globe-tech-pvt-ltd.onrender.com/live");
     let data = await res.json();
 
-    document.getElementById("marketData").innerText =
-      JSON.stringify(data, null, 2);
+    if (data.error) {
+      document.getElementById("marketData").innerHTML =
+        "❌ " + data.error;
+      return;
+    }
+
+    let price = data.data["NSE_INDEX:Nifty 50"].last_price;
+
+    document.getElementById("marketData").innerHTML =
+      "NIFTY 50 : <b>" + price + "</b>";
 
   } catch (err) {
-    document.getElementById("marketData").innerText =
-      "❌ Error: Server not responding";
+    document.getElementById("marketData").innerHTML =
+      "❌ Server Not Responding";
   }
 }
 
-loadMarket(); // auto load
+// Auto load
+loadMarket();
+
+// Auto refresh every 10 sec
+setInterval(loadMarket, 10000);
 </script>
 
 <!-- LIVE MARKET END -->
