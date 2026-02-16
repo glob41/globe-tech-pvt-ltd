@@ -216,72 +216,98 @@ padding:12px;
 </div>
 <!-- LIVE MARKET START -->
 
-<section style="padding:20px; background:#fff; border-radius:10px; margin:20px;">
+<style>
+.marketBox{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  padding:10px;
+  margin:10px 0;
+  border-radius:8px;
+  font-weight:bold;
+}
 
-  <h2>📈 Live Market (NIFTY 50)</h2>
+.equityBar{
+  background:#0d47a1;
+  color:white;
+}
 
-  <button onclick="loadMarket()"
-    style="padding:10px 20px; background:green; color:#fff; border:none; border-radius:5px;">
-    Refresh Data
-  </button>
+.commodityBar{
+  background:#1b5e20;
+  color:white;
+}
 
-  <div id="marketData"
-    style="margin-top:15px; background:#000; color:#0f0; padding:15px; border-radius:5px;">
-    Loading...
-  </div>
+.item{
+  min-width:140px;
+  text-align:center;
+  background:rgba(0,0,0,0.3);
+  padding:8px;
+  border-radius:6px;
+}
+</style>
 
-</section>
+<!-- EQUITY -->
+<div class="marketBox equityBar" id="equityBar">
+  Loading Equity...
+</div>
+
+<!-- COMMODITY -->
+<div class="marketBox commodityBar" id="commodityBar">
+  Loading Commodity...
+</div>
 
 <script>
-async function loadMarket() {
-  try {
+
+async function loadMarket(){
+
+  try{
+
     let res = await fetch("https://globe-tech-pvt-ltd.onrender.com/live");
-
-    if (!res.ok) throw new Error("Server Error");
-
     let data = await res.json();
 
-    let nifty = data.data["NSE_INDEX:Nifty 50"];
-    let bank = data.data["NSE_INDEX:Nifty Bank"];
-    let sensex = data.data["BSE_INDEX:SENSEX"];
+    function box(name,key){
 
-    function box(name, obj) {
-      if (!obj) return "";
-
-      let color = obj.change >= 0 ? "lime" : "red";
-      let arrow = obj.change >= 0 ? "▲" : "▼";
+      let obj = data.data[key];
+      if(!obj) return "";
 
       return `
-      <div style="margin:10px;padding:10px;background:#000;border-radius:8px">
-        <b style="color:white">${name}</b><br>
-        <span style="color:${color};font-size:18px">
-          ${arrow} ${obj.last_price}
-        </span><br>
-        <small style="color:white">
-          ${obj.change} (${obj.change_percent}%)
-        </small><br>
-        <small style="color:#aaa">
-          H:${obj.high} | L:${obj.low}
-        </small>
+      <div class="item">
+        ${name}<br>
+        <span style="color:lime">${obj.last_price}</span>
       </div>`;
     }
 
-    document.getElementById("marketData").innerHTML =
-      box("NIFTY 50", nifty) +
-      box("BANKNIFTY", bank) +
-      box("SENSEX", sensex);
+    // EQUITY
+    document.getElementById("equityBar").innerHTML =
 
-  } catch (err) {
-    document.getElementById("marketData").innerHTML =
-      "❌ Server Not Responding";
+      box("NIFTY","NSE_INDEX:Nifty 50") +
+      box("BANKNIFTY","NSE_INDEX:Nifty Bank") +
+      box("SENSEX","BSE_INDEX:SENSEX") +
+      box("FINNIFTY","NSE_INDEX:Nifty Fin Service") +
+      box("MIDCAP","NSE_INDEX:Nifty Midcap 100") +
+      box("BANKEX","BSE_INDEX:BANKEX");
+
+    // COMMODITY
+    document.getElementById("commodityBar").innerHTML =
+
+      box("GOLD","MCX_INDEX:Gold") +
+      box("SILVER","MCX_INDEX:Silver") +
+      box("CRUDE","MCX_INDEX:Crude Oil") +
+      box("NATURAL GAS","MCX_INDEX:Natural Gas");
+
   }
+  catch{
+
+    document.getElementById("equityBar").innerHTML="Market Down";
+    document.getElementById("commodityBar").innerHTML="Market Down";
+
+  }
+
 }
 
-// Auto Load
 loadMarket();
+setInterval(loadMarket,10000);
 
-// Refresh Every 10 sec
-setInterval(loadMarket, 10000);
 </script>
 
 <!-- LIVE MARKET END -->
