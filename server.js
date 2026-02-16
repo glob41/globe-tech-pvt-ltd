@@ -1,16 +1,28 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
-// Upstox details (Render se aayega)
-const API_KEY = process.env.UPSTOX_API_KEY;
+// Enable CORS
+app.use(cors());
+
+// Upstox Token (Render Environment se aayega)
 const ACCESS_TOKEN = process.env.UPSTOX_ACCESS_TOKEN;
 
-// Live market endpoint
+// Test Route
+app.get("/", (req, res) => {
+  res.send("Server Running 🚀");
+});
+
+// Live Market Route
 app.get("/live", async (req, res) => {
   try {
+    if (!ACCESS_TOKEN) {
+      return res.json({ error: "Access Token Missing" });
+    }
+
     const response = await axios.get(
       "https://api.upstox.com/v2/market-quote/ltp?instrument_key=NSE_INDEX|Nifty%2050",
       {
@@ -22,16 +34,16 @@ app.get("/live", async (req, res) => {
     );
 
     res.json(response.data);
-  } catch (error) {
-    res.json({ error: "Data nahi mil raha", details: error.message });
+
+  } catch (err) {
+    res.json({
+      error: "Upstox API Error",
+      details: err.message,
+    });
   }
 });
 
-// Home page
-app.get("/", (req, res) => {
-  res.send("Live Market Server Running 🚀");
-});
-
+// Start Server
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
