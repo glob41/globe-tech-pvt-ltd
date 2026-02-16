@@ -214,47 +214,85 @@ padding:12px;
 <h2>Trusted Stock Market Research</h2>
 <p>Equity • Commodity • Combo Advisory</p>
 </div>
-<!-- LIVE MARKET START -->
+<!-- ===== LIVE MARKET PREMIUM START ===== -->
 
 <style>
-.marketBox{
+/* MAIN */
+#marketSection{
+  background:#0d1117;
+  color:#fff;
+  padding:15px;
+  border-radius:10px;
+  margin:20px 0;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+/* TOP BAR */
+#topBar{
   display:flex;
-  gap:15px;
+  gap:20px;
   overflow-x:auto;
+  background:#161b22;
   padding:10px;
-  margin:10px 0;
   border-radius:8px;
+  margin-bottom:20px;
   font-weight:bold;
 }
 
-.equityBar{
-  background:#0d47a1;
-  color:white;
-}
-
-.commodityBar{
-  background:#1b5e20;
-  color:white;
-}
-
-.item{
-  min-width:140px;
+/* TOP ITEM */
+.topItem{
+  min-width:160px;
   text-align:center;
-  background:rgba(0,0,0,0.3);
-  padding:8px;
-  border-radius:6px;
+}
+
+/* CARDS GRID */
+#cardGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+/* CARD */
+.marketCard{
+  background:#161b22;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.6);
+}
+
+.marketCard h3{
+  margin:0 0 8px;
+  color:#58a6ff;
+  font-size:17px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.green{color:#00ff7f;}
+.red{color:#ff4c4c;}
+
+.small{
+  font-size:13px;
+  color:#aaa;
 }
 </style>
 
-<!-- EQUITY -->
-<div class="marketBox equityBar" id="equityBar">
-  Loading Equity...
+
+<section id="marketSection">
+
+<!-- TOP LIVE BAR -->
+<div id="topBar">
+  Loading Market...
 </div>
 
-<!-- COMMODITY -->
-<div class="marketBox commodityBar" id="commodityBar">
-  Loading Commodity...
-</div>
+<!-- PREMIUM CARDS -->
+<div id="cardGrid"></div>
+
+</section>
+
 
 <script>
 
@@ -263,54 +301,108 @@ async function loadMarket(){
   try{
 
     let res = await fetch("https://globe-tech-pvt-ltd.onrender.com/live");
-    let data = await res.json();
+    let json = await res.json();
 
-    function box(name,key){
-
-      let obj = data.data[key];
-      if(!obj) return "";
-
-      return `
-      <div class="item">
-        ${name}<br>
-        <span style="color:lime">${obj.last_price}</span>
-      </div>`;
+    if(json.status !== "success"){
+      throw "API Error";
     }
 
-    // EQUITY
-    document.getElementById("equityBar").innerHTML =
+    let d = json.data;
 
-      box("NIFTY","NSE_INDEX:Nifty 50") +
-      box("BANKNIFTY","NSE_INDEX:Nifty Bank") +
-      box("SENSEX","BSE_INDEX:SENSEX") +
-      box("FINNIFTY","NSE_INDEX:Nifty Fin Service") +
-      box("MIDCAP","NSE_INDEX:Nifty Midcap 100") +
-      box("BANKEX","BSE_INDEX:BANKEX");
+    const list = [
 
-    // COMMODITY
-    document.getElementById("commodityBar").innerHTML =
+      ["NIFTY","NSE_INDEX:Nifty 50"],
+      ["BANKNIFTY","NSE_INDEX:Nifty Bank"],
+      ["FINNIFTY","NSE_INDEX:Nifty Fin Service"],
+      ["SENSEX","BSE_INDEX:SENSEX"]
 
-      box("GOLD","MCX_INDEX:Gold") +
-      box("SILVER","MCX_INDEX:Silver") +
-      box("CRUDE","MCX_INDEX:Crude Oil") +
-      box("NATURAL GAS","MCX_INDEX:Natural Gas");
+    ];
+
+    let topHTML = "";
+    let cardHTML = "";
+
+    list.forEach(item=>{
+
+      let name = item[0];
+      let key  = item[1];
+
+      if(!d[key]) return;
+
+      let o = d[key];
+
+      let price = o.last_price || 0;
+      let ch = o.net_change || 0;
+      let per = o.change_percent || 0;
+      let high = o.high || "-";
+      let low = o.low || "-";
+      let vol = o.volume || "-";
+
+      let color = ch >= 0 ? "green":"red";
+      let arrow = ch >= 0 ? "▲":"▼";
+
+
+      /* TOP BAR */
+      topHTML += `
+      <div class="topItem">
+        ${name}<br>
+        <span class="${color}">
+          ${price} ${arrow} ${per}%
+        </span>
+      </div>`;
+
+
+      /* CARD */
+      cardHTML += `
+      <div class="marketCard">
+
+        <h3>${name}</h3>
+
+        <div class="price ${color}">
+          ${price} ${arrow}
+        </div>
+
+        <div class="small">
+          Change: ${ch} (${per}%)
+        </div>
+
+        <div class="small">
+          High: ${high} | Low: ${low}
+        </div>
+
+        <div class="small">
+          Volume: ${vol}
+        </div>
+
+      </div>`;
+    });
+
+
+    document.getElementById("topBar").innerHTML = topHTML;
+    document.getElementById("cardGrid").innerHTML = cardHTML;
 
   }
-  catch{
+  catch(err){
 
-    document.getElementById("equityBar").innerHTML="Market Down";
-    document.getElementById("commodityBar").innerHTML="Market Down";
+    document.getElementById("topBar").innerHTML =
+    "❌ Market Not Available";
+
+    document.getElementById("cardGrid").innerHTML =
+    "❌ Data Error";
 
   }
 
 }
 
+
+// AUTO LOAD
 loadMarket();
+
+// AUTO REFRESH (10 sec)
 setInterval(loadMarket,10000);
 
 </script>
 
-<!-- LIVE MARKET END -->
+<!-- ===== LIVE MARKET PREMIUM END ===== -->
 <!-- REGISTER START -->
 <section class="box" id="register">
 <h3>Register Now</h3>
