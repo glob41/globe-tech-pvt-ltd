@@ -362,8 +362,8 @@ async function loadMarket(){
         </div>
 
         <div class="small">
-          Change: ${ch} (${per}%)
-        </div>
+  Change: ${ch} (${price !== ch ? (((ch) / (price - ch)) * 100).toFixed(2) : "0.00"}%)
+</div>
 
         <div class="small">
           High: ${high} | Low: ${low}
