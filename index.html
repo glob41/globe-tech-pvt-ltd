@@ -715,8 +715,29 @@ window.open("https://wa.me/917697611673?text="+msg);
 
 </script>
 
- <div id="chartBox" style="display:none; margin-top:20px;">
+<div id="chartBox" style="display:none; margin-top:20px;">
   <div id="tv_chart"></div>
- </div>
+</div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+
+<script>
+function showChart(symbol){
+  document.getElementById("chartBox").style.display = "block";
+  document.getElementById("tv_chart").innerHTML = "";
+
+  new TradingView.widget({
+    "width": "100%",
+    "height": 400,
+    "symbol": symbol,
+    "interval": "1",
+    "timezone": "Asia/Kolkata",
+    "theme": "dark",
+    "style": "1",
+    "container_id": "tv_chart"
+  });
+}
+</script>
+
 </body>
 </html>
