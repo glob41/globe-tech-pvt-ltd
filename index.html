@@ -355,7 +355,10 @@ async function loadMarket(){
       cardHTML += `
       <div class="marketCard">
 
-        <h3>${name}</h3>
+        <h3>
+  ${name}
+  <button onclick="showChart('${key}')" class="chartBtn">📊</button>
+</h3>
 
         <div class="price ${color}">
           ${price} ${arrow}
